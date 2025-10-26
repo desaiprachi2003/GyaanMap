@@ -1,0 +1,8 @@
+career_id,title,category,description
+1,Software Engineer,tech,"Develops and maintains software; writes code, debugs."
+2,Data Scientist,tech,"Analyzes data, builds ML models, communicates insights."
+3,Graphic Designer,creative,"Creates visual content, branding, and layouts."
+4,Product Manager,management,"Coordinates teams, plans product roadmaps."
+5,Reseearch Scientist,research,Performs experiments and publishes findings.
+6,Sports Trainer,sports,"Trains athletes, plans workouts, performance analysis."
+,,,...
