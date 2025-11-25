@@ -5,8 +5,18 @@ import joblib
 import numpy as np
 import pandas as pd
 from sentence_transformers import SentenceTransformer
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],       # allow React (localhost:3000)
+    allow_credentials=True,
+    allow_methods=["*"],       # IMPORTANT → allows OPTIONS
+    allow_headers=["*"],
+)
+
 
 # Load models (same as in inference.py)
 xgb = joblib.load("xgb_model.joblib")
@@ -35,8 +45,8 @@ def predict(data: QuizAnswers):
     answers = data.answers
     # Convert answers -> features (re-use code from inference.py)
     def answers_to_features(answers):
-        opt2cat = {"A":"tech","B":"creative","C":"management","D":"research","E":"sports"}
-        cats = ["tech","creative","management","research","sports"]
+        opt2cat = {"A":"tech","B":"creative","C":"management","D":"research","E":"sports","F": "social" }
+        cats = ["tech","creative","management","research","sports","social"]
         cnts = {f"cnt_{c}":0 for c in cats}
         for q,v in answers.items():
             v = str(v).strip().upper()
@@ -60,7 +70,8 @@ def predict(data: QuizAnswers):
             "creative": "I enjoy designing, drawing, storytelling, and producing creative content.",
             "management": "I enjoy leading teams, planning, organizing and managing people.",
             "research": "I enjoy experimenting, learning deeply, and doing scientific research.",
-            "sports": "I enjoy physical activity, coaching and sports performance."
+            "sports": "I enjoy physical activity, coaching and sports performance.",
+            "social": "I enjoy helping people, communicating, supporting others, and community activities."
         }
         query_text = prototypes.get(pred_label, "")
 
@@ -77,3 +88,8 @@ def predict(data: QuizAnswers):
         row = careers.iloc[idx]
         suggestions.append({"id":int(row["career_id"]), "title":row["title"], "description":row["description"], "category": row["category"]})
     return {"predicted_category": pred_label, "suggestions": suggestions}
+
+# keep this at the very end
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app_fastapi:app", host="127.0.0.1", port=8000, reload=True)

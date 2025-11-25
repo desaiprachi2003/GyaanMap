@@ -120,7 +120,9 @@ model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 labels = unique_labels(y_test, y_pred)
-print("Model accuracy on synthetic test set:", round(labels, 2))
+accuracy = accuracy_score(y_test, y_pred)
+print("Model accuracy on synthetic test set:", round(accuracy, 2))
+
 print("\nClassification report:\n")
 print(classification_report(y_test, y_pred, labels=labels, target_names=le.classes_[labels]))
 
