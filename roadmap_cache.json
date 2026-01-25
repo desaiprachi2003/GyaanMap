@@ -1,53 +1,4 @@
 {
-  "Software Engineering": {
-    "career": "Software Engineering",
-    "roadmap": [
-      {
-        "level": "Foundation",
-        "duration": "3–6 months",
-        "topics": [
-          "Introduction to Programming | https://www.codecademy.com/learn/introduction-to-programming",
-          "Basic Algorithms & Problem Solving | https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
-          "Version Control with Git | https://git-scm.com/doc",
-          "HTML & CSS Basics | https://www.w3schools.com/html/",
-          "Introduction to Databases | https://www.khanacademy.org/computing/computer-programming/sql"
-        ]
-      },
-      {
-        "level": "Intermediate",
-        "duration": "6–12 months",
-        "topics": [
-          "Object-Oriented Programming (OOP) | https://www.udemy.com/course/object-oriented-programming/",
-          "Data Structures & Algorithms | https://www.coursera.org/specializations/data-structures-algorithms",
-          "Web Development (JavaScript, React/Node.js) | https://www.theodinproject.com/",
-          "APIs & RESTful Services | https://www.restapitutorial.com/",
-          "Basic DevOps & CI/CD | https://www.atlassian.com/devops"
-        ]
-      },
-      {
-        "level": "Advanced",
-        "duration": "12–18 months",
-        "topics": [
-          "System Design & Architecture | https://www.educative.io/courses/grokking-the-system-design-interview",
-          "Advanced Databases (SQL/NoSQL) | https://www.mongodb.com/university/courses",
-          "Cloud Computing (AWS/Azure/GCP) | https://aws.amazon.com/getting-started/",
-          "Testing & Debugging | https://www.udacity.com/course/software-testing--cs258",
-          "Security Best Practices | https://owasp.org/www-project-top-ten/"
-        ]
-      },
-      {
-        "level": "Projects",
-        "duration": "18+ months",
-        "topics": [
-          "Build a Personal Portfolio Website",
-          "Create a Full-Stack Web App",
-          "Develop a REST API with Authentication",
-          "Contribute to Open Source",
-          "Build a Microservices-Based Application"
-        ]
-      }
-    ]
-  },
   "Data / AI Engineering": {
     "career": "Data / AI Engineering",
     "roadmap": [
@@ -55,36 +6,261 @@
         "level": "Foundation",
         "duration": "3–6 months",
         "topics": [
-          "Introduction to Programming | https://www.codecademy.com/learn/learn-python",
-          "Basic SQL for Data | https://www.khanacademy.org/computing/computer-programming/sql",
-          "Mathematics for Data Science | https://www.coursera.org/learn/machine-learning-mathematics"
+          {
+            "title": "Programming Basics (Python)",
+            "link": "https://www.learnpython.org/"
+          },
+          {
+            "title": "SQL for Data",
+            "link": "https://www.w3schools.com/sql/"
+          },
+          {
+            "title": "Math for Data Science (Linear Algebra, Statistics)",
+            "link": "https://www.khanacademy.org/math"
+          }
         ]
       },
       {
         "level": "Intermediate",
         "duration": "6–12 months",
         "topics": [
-          "Data Wrangling with Pandas | https://pandas.pydata.org/docs/getting_started/tutorials.html",
-          "Introduction to Machine Learning | https://www.coursera.org/learn/machine-learning",
-          "Big Data Basics (Hadoop/Spark) | https://www.edx.org/learn/hadoop"
+          {
+            "title": "Data Wrangling with Pandas",
+            "link": "https://pandas.pydata.org/docs/"
+          },
+          {
+            "title": "Data Visualization (Matplotlib/Seaborn)",
+            "link": "https://seaborn.pydata.org/"
+          },
+          {
+            "title": "Intro to Machine Learning",
+            "link": "https://www.coursera.org/learn/machine-learning"
+          }
         ]
       },
       {
         "level": "Advanced",
         "duration": "12–18 months",
         "topics": [
-          "Advanced SQL and Database Design | https://www.udacity.com/course/database-systems-concepts-design--ud150",
-          "Deep Learning Fundamentals | https://www.deeplearning.ai/courses/deep-learning-specialization/",
-          "Cloud Platforms for Data Engineering (AWS/GCP) | https://aws.amazon.com/getting-started/hands-on/build-data-lake/"
+          {
+            "title": "Big Data Tools (Spark, Hadoop)",
+            "link": "https://spark.apache.org/docs/latest/"
+          },
+          {
+            "title": "Deep Learning Basics (TensorFlow/PyTorch)",
+            "link": "https://www.tensorflow.org/learn"
+          },
+          {
+            "title": "Cloud Platforms (AWS/GCP for Data)",
+            "link": "https://aws.amazon.com/getting-started/"
+          }
         ]
       },
       {
         "level": "Projects",
         "duration": "18+ months",
         "topics": [
-          "Build a Data Pipeline",
-          "Train and Deploy a Simple ML Model",
-          "Create a Dashboard for Data Visualization"
+          {
+            "title": "Build a Data Pipeline (ETL)",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Data+Pipeline+(ETL)+tutorial"
+          },
+          {
+            "title": "Train a Simple ML Model",
+            "link": "https://www.youtube.com/results?search_query=Train+a+Simple+ML+Model+tutorial"
+          },
+          {
+            "title": "Deploy a Model with Flask/Streamlit",
+            "link": "https://www.youtube.com/results?search_query=Deploy+a+Model+with+Flask/Streamlit+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "_meta": {
+    "last_updated": 1769330012
+  },
+  "Mechanical Engineering": {
+    "career": "Mechanical Engineering",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Mechanical Engineering",
+            "link": "https://www.khanacademy.org/science/mechanical-engineering"
+          },
+          {
+            "title": "Basic Physics (Mechanics)",
+            "link": "https://www.khanacademy.org/science/physics"
+          },
+          {
+            "title": "Mathematics for Engineers (Algebra, Calculus)",
+            "link": "https://www.khanacademy.org/math"
+          },
+          {
+            "title": "Engineering Drawing and CAD Basics",
+            "link": "https://www.onshape.com/en/learning-center"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Statics and Dynamics",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-003sc-engineering-dynamics-fall-2011/"
+          },
+          {
+            "title": "Thermodynamics",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-005-thermodynamics-of-energy-systems-spring-2013/"
+          },
+          {
+            "title": "Materials Science and Engineering",
+            "link": "https://ocw.mit.edu/courses/materials-science-and-engineering/3-012-fundamentals-of-materials-science-fall-2005/"
+          },
+          {
+            "title": "Fluid Mechanics",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-06-fluid-dynamics-spring-2013/"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Machine Design",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-72-elements-of-mechanical-design-spring-2009/"
+          },
+          {
+            "title": "Heat Transfer",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
+          },
+          {
+            "title": "Control Systems",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-14-analysis-and-design-of-feedback-control-systems-spring-2014/"
+          },
+          {
+            "title": "Finite Element Analysis (FEA)",
+            "link": "https://www.simscale.com/learn/finite-element-analysis/"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Design and Build a Simple Gear System",
+            "link": "https://www.youtube.com/results?search_query=Design+and+Build+a+Simple+Gear+System+tutorial"
+          },
+          {
+            "title": "Create a Basic Heat Exchanger Model",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Basic+Heat+Exchanger+Model+tutorial"
+          },
+          {
+            "title": "Build a Small Hydraulic or Pneumatic System",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Small+Hydraulic+or+Pneumatic+System+tutorial"
+          },
+          {
+            "title": "Develop a Prototype Using CAD and 3D Printing",
+            "link": "https://www.youtube.com/results?search_query=Develop+a+Prototype+Using+CAD+and+3D+Printing+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Design & UI/UX Engineering": {
+    "career": "Design & UI/UX Engineering",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Design Principles",
+            "link": "https://www.youtube.com/results?search_query=Introduction+to+Design+Principles+tutorial"
+          },
+          {
+            "title": "Basics of Color Theory",
+            "link": "https://www.youtube.com/results?search_query=Basics+of+Color+Theory+tutorial"
+          },
+          {
+            "title": "Typography Fundamentals",
+            "link": "https://www.youtube.com/results?search_query=Typography+Fundamentals+tutorial"
+          },
+          {
+            "title": "Introduction to UI/UX",
+            "link": "https://www.youtube.com/results?search_query=Introduction+to+UI/UX+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Wireframing & Prototyping",
+            "link": "https://www.youtube.com/results?search_query=Wireframing+&+Prototyping+tutorial"
+          },
+          {
+            "title": "User Research Methods",
+            "link": "https://www.youtube.com/results?search_query=User+Research+Methods+tutorial"
+          },
+          {
+            "title": "UI Design Tools (Figma, Sketch, Adobe XD)",
+            "link": "https://www.youtube.com/results?search_query=UI+Design+Tools+(Figma,+Sketch,+Adobe+XD)+tutorial"
+          },
+          {
+            "title": "Responsive Design Basics",
+            "link": "https://www.youtube.com/results?search_query=Responsive+Design+Basics+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Design Systems",
+            "link": "https://www.youtube.com/results?search_query=Design+Systems+tutorial"
+          },
+          {
+            "title": "Advanced Interaction Design",
+            "link": "https://www.youtube.com/results?search_query=Advanced+Interaction+Design+tutorial"
+          },
+          {
+            "title": "Accessibility in Design",
+            "link": "https://www.youtube.com/results?search_query=Accessibility+in+Design+tutorial"
+          },
+          {
+            "title": "Front-End Basics for Designers (HTML/CSS)",
+            "link": "https://www.youtube.com/results?search_query=Front-End+Basics+for+Designers+(HTML/CSS)+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Redesign an Existing App",
+            "link": "https://www.youtube.com/results?search_query=Redesign+an+Existing+App+tutorial"
+          },
+          {
+            "title": "Create a Portfolio Website",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Portfolio+Website+tutorial"
+          },
+          {
+            "title": "Build a Design System from Scratch",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Design+System+from+Scratch+tutorial"
+          },
+          {
+            "title": "Collaborate on a Real-World UX Case Study",
+            "link": "https://www.youtube.com/results?search_query=Collaborate+on+a+Real-World+UX+Case+Study+tutorial"
+          }
         ]
       }
     ]
@@ -96,40 +272,165 @@
         "level": "Foundation",
         "duration": "3–6 months",
         "topics": [
-          "Introduction to Civil Engineering | https://www.ice.org.uk/careers-learning/civil-engineering/what-is-civil-engineering",
-          "Basic Mathematics for Engineers | https://www.khanacademy.org/math",
-          "Physics Fundamentals | https://www.khanacademy.org/science/physics",
-          "Engineering Drawing Basics | https://www.youtube.com/watch?v=13SR7Q4j2g8"
+          {
+            "title": "Introduction to Civil Engineering",
+            "link": "https://www.asce.org/career-growth/civil-engineering-resources"
+          },
+          {
+            "title": "Basic Mathematics and Physics",
+            "link": "https://www.khanacademy.org/math"
+          },
+          {
+            "title": "Engineering Drawing and CAD Basics",
+            "link": "https://www.autodesk.com/products/autocad/overview"
+          },
+          {
+            "title": "Materials Science (Concrete, Steel, etc.)",
+            "link": "https://www.engineeringtoolbox.com/material-properties-t_24.html"
+          }
         ]
       },
       {
         "level": "Intermediate",
         "duration": "6–12 months",
         "topics": [
-          "Statics and Mechanics of Materials | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-050-solid-mechanics-fall-2004/",
-          "Surveying Basics | https://www.youtube.com/watch?v=RY4G18RyMq4",
-          "Introduction to Structural Analysis | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-050-solid-mechanics-fall-2004/",
-          "Construction Materials and Methods | https://www.youtube.com/watch?v=0qK8V3zXjzE"
+          {
+            "title": "Statics and Mechanics of Materials",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-001-mechanics-materials-i-fall-2006/"
+          },
+          {
+            "title": "Structural Analysis",
+            "link": "https://www.coursera.org/learn/structural-analysis"
+          },
+          {
+            "title": "Geotechnical Engineering Basics",
+            "link": "https://www.geoengineer.org/education"
+          },
+          {
+            "title": "Fluid Mechanics and Hydraulics",
+            "link": "https://ocw.mit.edu/courses/mechanical-engineering/2-06-fluid-dynamics-spring-2013/"
+          }
         ]
       },
       {
         "level": "Advanced",
         "duration": "12–18 months",
         "topics": [
-          "Advanced Structural Analysis | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-571-structural-analysis-and-control-spring-2004/",
-          "Geotechnical Engineering | https://www.youtube.com/watch?v=0qK8V3zXjzE",
-          "Transportation Engineering | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-201j-transportation-systems-analysis-demand-and-economics-fall-2008/",
-          "Hydraulics and Water Resources | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-060-engineering-mechanics-ii-spring-2006/"
+          {
+            "title": "Advanced Structural Design (Steel & Concrete)",
+            "link": "https://www.aisc.org/education/continuing-education"
+          },
+          {
+            "title": "Transportation Engineering",
+            "link": "https://www.transportation.gov/careers"
+          },
+          {
+            "title": "Environmental Engineering Principles",
+            "link": "https://www.epa.gov/education"
+          },
+          {
+            "title": "Construction Project Management",
+            "link": "https://www.pmi.org/learning"
+          }
         ]
       },
       {
         "level": "Projects",
         "duration": "18+ months",
         "topics": [
-          "Design a Small Bridge",
-          "Create a Building Layout Plan",
-          "Survey a Local Area",
-          "Analyze a Simple Structure"
+          {
+            "title": "Design a Small Bridge (Structural)",
+            "link": "https://www.youtube.com/results?search_query=Design+a+Small+Bridge+(Structural)+tutorial"
+          },
+          {
+            "title": "Create a Roadway Plan (Transportation)",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Roadway+Plan+(Transportation)+tutorial"
+          },
+          {
+            "title": "Soil Testing & Foundation Design (Geotechnical)",
+            "link": "https://www.youtube.com/results?search_query=Soil+Testing+&+Foundation+Design+(Geotechnical)+tutorial"
+          },
+          {
+            "title": "Sustainable Building Design (Environmental)",
+            "link": "https://www.youtube.com/results?search_query=Sustainable+Building+Design+(Environmental)+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Software Engineering": {
+    "career": "Software Engineering",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Programming",
+            "link": "https://www.codecademy.com/learn/introduction-to-programming"
+          },
+          {
+            "title": "Basic Data Structures",
+            "link": "https://www.geeksforgeeks.org/data-structures/"
+          },
+          {
+            "title": "Version Control with Git",
+            "link": "https://git-scm.com/doc"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Object-Oriented Programming",
+            "link": "https://www.freecodecamp.org/news/object-oriented-programming-concepts/"
+          },
+          {
+            "title": "Algorithms and Problem Solving",
+            "link": "https://leetcode.com/explore/learn/"
+          },
+          {
+            "title": "Databases and SQL",
+            "link": "https://www.w3schools.com/sql/"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "System Design",
+            "link": "https://www.educative.io/courses/grokking-the-system-design-interview"
+          },
+          {
+            "title": "Software Development Lifecycle",
+            "link": "https://www.tutorialspoint.com/sdlc/sdlc_overview.htm"
+          },
+          {
+            "title": "Testing and Debugging",
+            "link": "https://www.guru99.com/software-testing.html"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a Personal Portfolio Website",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Personal+Portfolio+Website+tutorial"
+          },
+          {
+            "title": "Create a To-Do List Application",
+            "link": "https://www.youtube.com/results?search_query=Create+a+To-Do+List+Application+tutorial"
+          },
+          {
+            "title": "Develop a Simple REST API",
+            "link": "https://www.youtube.com/results?search_query=Develop+a+Simple+REST+API+tutorial"
+          }
         ]
       }
     ]

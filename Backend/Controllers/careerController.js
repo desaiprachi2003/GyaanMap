@@ -4,26 +4,32 @@ const Career = require("../Models/Career");
 // Save career
 exports.saveCareer = async (req, res) => {
   try {
-    const userId = req.user.id; // from token
-    const { title, description, salary, growth, roadmap, resources } = req.body;
+    const userId = req.user.id;
+    const { title, description, roadmap } = req.body;
 
     const career = new Career({
       user: userId,
       title,
       description,
-      salary,
-      growth,
       roadmap,
-      resources, // expects [{ title, link }]
     });
 
     await career.save();
+
     res.status(201).json(career);
   } catch (err) {
-    console.error("Save career error:", err); // ✅ log full error
-    res.status(500).json({ error: "Failed to save career", details: err.message });
+    // 🔴 Duplicate key error
+    if (err.code === 11000) {
+      return res.status(409).json({
+        message: "Career already saved",
+      });
+    }
+
+    console.error("Save career error:", err);
+    res.status(500).json({ error: "Failed to save career" });
   }
 };
+
 
 
 // Get all saved careers of logged-in user

@@ -33,7 +33,8 @@ export default function App() {
   {/* Protected pages */}
   <Route path="/quiz" element={<ProtectedRoute> <Quiz /> </ProtectedRoute>}/>
   <Route path="/saved-careers" element={ <ProtectedRoute> <SavedCareers /> </ProtectedRoute>}/>
-  <Route path="/career-details" element={ <ProtectedRoute> <CareerDetails /> </ProtectedRoute>}/>
+ <Route path="/career/:id" element={<ProtectedRoute><CareerDetails /> </ProtectedRoute>}/>
+
   <Route path="/profile" element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute> }/>
   <Route path="/results" element={<ProtectedRoute><ResultList /></ProtectedRoute>}/>
   <Route path="/result-details" element={<ProtectedRoute><ResultDetails /></ProtectedRoute>}/>

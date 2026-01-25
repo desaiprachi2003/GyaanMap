@@ -1,16 +1,44 @@
 import React, { useState } from "react";
 import { Star } from "lucide-react";
+import axios from "axios";
 
-export default function Feedback({ careerTitle }) {
+export default function Feedback() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [feedback, setFeedback] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // later we’ll connect with backend API
-    setSubmitted(true);
+
+    if (rating === 0) {
+      alert("Please select a rating");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token"); // your auth token
+
+      await axios.post(
+  "http://localhost:5000/api/feedback",
+  {
+    rating,
+    satisfied: rating >= 3,
+    comment: feedback
+  },
+  {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }
+);
+
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Feedback submit error:", err);
+      alert("Failed to submit feedback");
+    }
   };
 
   return (
@@ -18,21 +46,17 @@ export default function Feedback({ careerTitle }) {
       <h2 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600 mb-2">
         We Value Your Feedback
       </h2>
-      {/* <p className="text-gray-600 mb-5">
-        How accurate was your recommendation for{" "}
-        <span className="font-semibold text-indigo-600">{careerTitle}</span>?
-      </p> */}
 
       {submitted ? (
         <div className="text-green-600 font-semibold text-center py-4">
-          ✅ Thank you for your valuable feedback!
+           Thank you for your valuable feedback!
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
-               <p className="text-gray-600 text-center mb-4">
-      How accurate was your recommendation for{" "}
-      <span className="font-semibold text-indigo-600">{careerTitle}</span>?
-    </p>
+          <p className="text-gray-600 text-center mb-4">
+            How accurate was your recommendation
+          </p>
+
           {/* ⭐ Rating */}
           <div className="flex justify-center gap-2 mb-4">
             {[1, 2, 3, 4, 5].map((star) => (
@@ -51,7 +75,7 @@ export default function Feedback({ careerTitle }) {
             ))}
           </div>
 
-          {/* 📝 Comment Box */}
+          {/* 📝 Comment */}
           <textarea
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
@@ -60,7 +84,7 @@ export default function Feedback({ careerTitle }) {
             className="w-full p-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 resize-none shadow-sm"
           />
 
-          {/* 🚀 Submit Button */}
+          {/* 🚀 Submit */}
           <div className="flex justify-center">
             <button
               type="submit"
@@ -74,3 +98,4 @@ export default function Feedback({ careerTitle }) {
     </div>
   );
 }
+

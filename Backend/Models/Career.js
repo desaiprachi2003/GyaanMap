@@ -1,42 +1,40 @@
 const mongoose = require("mongoose");
 
-const CareerSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User", // career belongs to a specific user
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  salary: {
-    type: String, // e.g. "₹40,000 - ₹1,80,000"
-  },
-  growth: {
-    type: String, // e.g. "22% growth"
-  },
-  roadmap: [
-    {
-      level: String, // "Foundation"
-      duration: String, // "6 months"
-      topics: [String], // ["Programming Basics", "Web Development"]
+const CareerSchema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-  ],
-  resources: [
-    {
-      title: { type: String, required: true }, // e.g. "CS50 Course"
-      link: { type: String, required: true },  // e.g. "https://cs50.harvard.edu"
+
+    title: {
+      type: String,
+      required: true,
     },
-  ],
-  savedAt: {
-    type: Date,
-    default: Date.now,
+
+    description: {
+      type: String,
+      required: true,
+    },
+
+    roadmap: [
+      {
+        level: String,
+        duration: String,
+        topics: [
+          {
+            title: String,
+            link: String,
+          },
+        ],
+      },
+    ],
   },
-});
+  { timestamps: true }
+);
+
+// 🔥 Prevent duplicate save (same user + same career)
+CareerSchema.index({ user: 1, title: 1 }, { unique: true });
 
 module.exports = mongoose.model("Career", CareerSchema);

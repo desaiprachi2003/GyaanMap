@@ -408,61 +408,63 @@ const pageTransition = {
 };
 
 
-  return (
-    <motion.div
-  className="min-h-screen flex flex-col items-center bg-gray-50 py-8"
-  initial={{ y: 50, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  exit={{ y: -50, opacity: 0 }}
-  transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
->
-    <div className="min-h-screen flex flex-col items-center bg-gray-50 py-8">
-         {/* Header with Back button, progress bar and percent */}
-    <div className="flex items-center justify-between w-full max-w-3xl mb-8">
-      {/* <button
-        onClick={handleBackToHome}
-        className="flex items-center px-5 py-2 bg-green-400 hover:bg-green-500 text-white rounded-lg font-semibold shadow"
-      >
-        <span className="mr-2">&larr;</span> Back to Home
-      </button> */}
-        <div
-    onClick={handleBackToHome}
-    role="button"
-    tabIndex={0}
-    onKeyPress={(e) => { if (e.key === 'Enter') handleBackToHome(); }}
-    className="cursor-pointer text-gray-700 hover:bg-green-400 hover:text-white px-5 py-2 rounded-lg font-semibold shadow transition-colors flex items-center"
-  >
-    <span className="mr-2">&larr;</span> Back to Home
-  </div>
 
-      <div className="flex-1 mx-6">
-        <div className="relative w-full h-2 rounded bg-gray-200">
-          <div
-            className="absolute h-2 rounded bg-gradient-to-r from-blue-500 to-purple-600"
-            style={{
-              width: `${((step + 1) / questions.length) * 100}%`,
-              transition: "width 0.3s",
-            }}
-          ></div>
+
+return (
+  <motion.div
+    className="min-h-screen flex flex-col items-center bg-gray-50 py-4"
+    initial={{ y: 50, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
+    exit={{ y: -50, opacity: 0 }}
+    transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
+  >
+    <div className="flex flex-col items-center bg-gray-50 py-4 w-full">
+
+      {/* Header */}
+      <div className="flex items-center justify-between w-full max-w-3xl mb-4">
+        <div
+          onClick={handleBackToHome}
+          role="button"
+          tabIndex={0}
+          onKeyPress={(e) => { if (e.key === 'Enter') handleBackToHome(); }}
+          className="cursor-pointer text-gray-700 hover:bg-green-400 hover:text-white px-4 py-1 rounded-lg font-semibold shadow transition-colors flex items-center text-sm"
+        >
+          <span className="mr-2">&larr;</span> Back to Home
         </div>
-        <div className="text-center text-gray-500 mt-1">
-          {`${Math.round(((step + 1) / questions.length) * 100)}% Complete`}
+
+        <div className="flex-1 mx-4">
+          <div className="relative w-full h-1.5 rounded bg-gray-200">
+            <div
+              className="absolute h-1.5 rounded bg-gradient-to-r from-blue-500 to-purple-600"
+              style={{
+                width: `${((step + 1) / questions.length) * 100}%`,
+                transition: "width 0.3s",
+              }}
+            ></div>
+          </div>
+          <div className="text-center text-gray-500 mt-1 text-sm">
+            {`${Math.round(((step + 1) / questions.length) * 100)}% Complete`}
+          </div>
+        </div>
+
+        <div className="text-gray-600 font-medium text-sm">
+          {`Q ${step + 1} / ${questions.length}`}
         </div>
       </div>
 
-      <div className="text-gray-600 font-medium">{`Question ${step + 1} of ${questions.length}`}</div>
-    </div>
-      <div className="w-full max-w-3xl bg-white shadow-md rounded-xl p-8">
-       
-        <h2 className="text-3xl font-bold mb-8">
+      {/* Card */}
+      <div className="w-full max-w-3xl bg-white shadow-md rounded-xl p-5">
+
+        <h2 className="text-2xl font-bold mb-5">
           {questions[step].question}
         </h2>
-        <div className="flex flex-col gap-6 mb-10">
+
+        <div className="flex flex-col gap-4 mb-6">
           {questions[step].options.map((opt, idx) => (
             <button
               key={opt}
               onClick={() => handleOptionClick(idx)}
-              className={`text-lg border rounded-xl px-6 py-4 text-left transition-all ${
+              className={`text-base border rounded-lg px-5 py-3 text-left transition-all ${
                 answers[step] === idx
                   ? "bg-gradient-to-r from-blue-100 to-purple-100 border-blue-400"
                   : "bg-white hover:bg-gray-50"
@@ -472,18 +474,20 @@ const pageTransition = {
             </button>
           ))}
         </div>
+
         <div className="flex justify-between">
           <button
             disabled={step === 0}
             onClick={handlePrev}
-            className="px-5 py-2 rounded bg-gray-200 text-gray-600"
+            className="px-4 py-2 rounded bg-gray-200 text-gray-600 text-sm"
           >
             Previous
           </button>
+
           {step === questions.length - 1 ? (
             <button
               onClick={handleSubmit}
-              className="px-6 py-2 rounded bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold"
+              className="px-5 py-2 rounded bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold text-sm"
             >
               Submit
             </button>
@@ -491,7 +495,7 @@ const pageTransition = {
             <button
               disabled={answers[step] === undefined}
               onClick={handleNext}
-              className="px-6 py-2 rounded bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold"
+              className="px-5 py-2 rounded bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold text-sm"
             >
               Next
             </button>
@@ -499,8 +503,9 @@ const pageTransition = {
         </div>
       </div>
     </div>
-    </motion.div>
-  );
+  </motion.div>
+);
+
 }
 
 
