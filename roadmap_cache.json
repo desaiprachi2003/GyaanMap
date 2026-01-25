@@ -1,0 +1,137 @@
+{
+  "Software Engineering": {
+    "career": "Software Engineering",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          "Introduction to Programming | https://www.codecademy.com/learn/introduction-to-programming",
+          "Basic Algorithms & Problem Solving | https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+          "Version Control with Git | https://git-scm.com/doc",
+          "HTML & CSS Basics | https://www.w3schools.com/html/",
+          "Introduction to Databases | https://www.khanacademy.org/computing/computer-programming/sql"
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          "Object-Oriented Programming (OOP) | https://www.udemy.com/course/object-oriented-programming/",
+          "Data Structures & Algorithms | https://www.coursera.org/specializations/data-structures-algorithms",
+          "Web Development (JavaScript, React/Node.js) | https://www.theodinproject.com/",
+          "APIs & RESTful Services | https://www.restapitutorial.com/",
+          "Basic DevOps & CI/CD | https://www.atlassian.com/devops"
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          "System Design & Architecture | https://www.educative.io/courses/grokking-the-system-design-interview",
+          "Advanced Databases (SQL/NoSQL) | https://www.mongodb.com/university/courses",
+          "Cloud Computing (AWS/Azure/GCP) | https://aws.amazon.com/getting-started/",
+          "Testing & Debugging | https://www.udacity.com/course/software-testing--cs258",
+          "Security Best Practices | https://owasp.org/www-project-top-ten/"
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          "Build a Personal Portfolio Website",
+          "Create a Full-Stack Web App",
+          "Develop a REST API with Authentication",
+          "Contribute to Open Source",
+          "Build a Microservices-Based Application"
+        ]
+      }
+    ]
+  },
+  "Data / AI Engineering": {
+    "career": "Data / AI Engineering",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          "Introduction to Programming | https://www.codecademy.com/learn/learn-python",
+          "Basic SQL for Data | https://www.khanacademy.org/computing/computer-programming/sql",
+          "Mathematics for Data Science | https://www.coursera.org/learn/machine-learning-mathematics"
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          "Data Wrangling with Pandas | https://pandas.pydata.org/docs/getting_started/tutorials.html",
+          "Introduction to Machine Learning | https://www.coursera.org/learn/machine-learning",
+          "Big Data Basics (Hadoop/Spark) | https://www.edx.org/learn/hadoop"
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          "Advanced SQL and Database Design | https://www.udacity.com/course/database-systems-concepts-design--ud150",
+          "Deep Learning Fundamentals | https://www.deeplearning.ai/courses/deep-learning-specialization/",
+          "Cloud Platforms for Data Engineering (AWS/GCP) | https://aws.amazon.com/getting-started/hands-on/build-data-lake/"
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          "Build a Data Pipeline",
+          "Train and Deploy a Simple ML Model",
+          "Create a Dashboard for Data Visualization"
+        ]
+      }
+    ]
+  },
+  "Civil Engineering": {
+    "career": "Civil Engineering",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          "Introduction to Civil Engineering | https://www.ice.org.uk/careers-learning/civil-engineering/what-is-civil-engineering",
+          "Basic Mathematics for Engineers | https://www.khanacademy.org/math",
+          "Physics Fundamentals | https://www.khanacademy.org/science/physics",
+          "Engineering Drawing Basics | https://www.youtube.com/watch?v=13SR7Q4j2g8"
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          "Statics and Mechanics of Materials | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-050-solid-mechanics-fall-2004/",
+          "Surveying Basics | https://www.youtube.com/watch?v=RY4G18RyMq4",
+          "Introduction to Structural Analysis | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-050-solid-mechanics-fall-2004/",
+          "Construction Materials and Methods | https://www.youtube.com/watch?v=0qK8V3zXjzE"
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          "Advanced Structural Analysis | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-571-structural-analysis-and-control-spring-2004/",
+          "Geotechnical Engineering | https://www.youtube.com/watch?v=0qK8V3zXjzE",
+          "Transportation Engineering | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-201j-transportation-systems-analysis-demand-and-economics-fall-2008/",
+          "Hydraulics and Water Resources | https://ocw.mit.edu/courses/civil-and-environmental-engineering/1-060-engineering-mechanics-ii-spring-2006/"
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          "Design a Small Bridge",
+          "Create a Building Layout Plan",
+          "Survey a Local Area",
+          "Analyze a Simple Structure"
+        ]
+      }
+    ]
+  }
+}

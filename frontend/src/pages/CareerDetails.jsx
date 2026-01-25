@@ -157,7 +157,7 @@ export default function CareerDetails() {
           {/* Learning Roadmap */}
           <section className="bg-white shadow-md rounded-2xl p-6 transition-transform transform hover:-translate-y-1 hover:shadow-[0_6px_20px_rgba(124,58,237,0.25)]">
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <span className="text-purple-600">📘</span> Learning Roadmap
+              <span className="text-purple-600"></span> Learning Roadmap
             </h2>
             <div className="space-y-4">
               {roadmap.map((step, i) => (
