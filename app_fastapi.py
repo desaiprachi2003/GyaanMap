@@ -34,14 +34,24 @@ app.add_middleware(
 # LOAD ML MODELS (CAREER PREDICTION)
 # =========================================================
 
+# =========================================================
+# LOAD CS/IT ML MODELS & DATA
+# =========================================================
+
+# XGBoost career classifier (CS/IT only)
 xgb = joblib.load("xgb_model.joblib")
 le = joblib.load("label_encoder.joblib")
 
-careers = pd.read_csv("careers_clean.csv")
-embeddings = np.load("career_embeddings.npy")
+# CS/IT careers metadata
+careers = pd.read_csv("careers_csit.csv")
 
+# SBERT embeddings for CS/IT careers
+embeddings = np.load("career_embeddings_csit.npy")
+
+# SBERT model metadata
 sbert_meta = joblib.load("sbert_meta.joblib")
 sbert = SentenceTransformer(sbert_meta["model_name"])
+
 
 try:
     import faiss
@@ -58,8 +68,39 @@ except:
 # =========================================================
 
 class QuizAnswers(BaseModel):
-    answers: dict
+    Q1: int
+    Q2: int
+    Q3: int
+    Q4: int
+    Q5: int
+    Q6: int
+    Q7: int
+    Q8: int
+    Q9: int
+    Q10: int
+    Q11: int
+    Q12: int
+    Q13: int
+    Q14: int
+    Q15: int
+    Q16: int
+    Q17: int
+    Q18: int
+    Q19: int
+    Q20: int
+    Q21: int
+    Q22: int
+    Q23: int
+    Q24: int
     free_text: str | None = None
+
+class RIASECInput(BaseModel):
+    R: float
+    I: float
+    A: float
+    S: float
+    E: float
+    C: float
 
 
 class RoadmapRequest(BaseModel):
@@ -77,68 +118,68 @@ class RoadmapResponse(BaseModel):
 # =========================================================
 
 @app.post("/predict")
-def predict(data: QuizAnswers):
+def predict(data: RIASECInput):
 
-    def answers_to_features(answers):
-        opt2cat = {
-            "A": "tech",
-            "B": "creative",
-            "C": "management",
-            "D": "research",
-            "E": "sports",
-            "F": "social"
+    # 1️⃣ Build ML input (RIASEC → DataFrame)
+    X = pd.DataFrame([{
+        "R": data.R,
+        "I": data.I,
+        "A": data.A,
+        "S": data.S,
+        "E": data.E,
+        "C": data.C
+    }])
+
+    # 2️⃣ Get probability scores from XGBoost
+    probs = xgb.predict_proba(X)[0]   # (num_classes,)
+
+    # 3️⃣ Pick TOP 3 careers
+    top3_idx = np.argsort(probs)[-3:][::-1]
+
+    top3 = [
+        {
+            "career": le.inverse_transform([idx])[0],
+            "confidence": round(float(probs[idx]), 3)
         }
+        for idx in top3_idx
+    ]
 
-        cats = list(opt2cat.values())
-        cnts = {f"cnt_{c}": 0 for c in cats}
-
-        for v in answers.values():
-            v = str(v).strip().upper()
-            if v in opt2cat:
-                cnts[f"cnt_{opt2cat[v]}"] += 1
-
-        cnts_df = pd.DataFrame([cnts])
-        total = cnts_df.sum(axis=1).iloc[0]
-        pct = cnts_df.div(total if total else 1, axis=0).add_prefix("pct_")
-
-        return pd.concat([cnts_df, pct], axis=1)
-
-    X = answers_to_features(data.answers)
-    pred_enc = xgb.predict(X.values)[0]
-    pred_label = le.inverse_transform([pred_enc])[0]
-
+    # 4️⃣ CS/IT-only intent prototypes (for SBERT)
     prototypes = {
-        "tech": "I enjoy coding, debugging and solving logical problems.",
-        "creative": "I enjoy design, art and creative expression.",
-        "management": "I enjoy leading teams and organizing work.",
-        "research": "I enjoy experiments and deep learning.",
-        "sports": "I enjoy physical activity and coaching.",
-        "social": "I enjoy helping people and community work."
+        "Backend Developer": "I enjoy APIs, databases, and server-side systems.",
+        "Frontend Developer": "I enjoy UI design and interactive web experiences.",
+        "Data Scientist": "I enjoy data analysis, statistics, and machine learning.",
+        "DevOps Engineer": "I enjoy CI/CD pipelines, cloud infrastructure, and automation.",
+        "Cybersecurity Analyst": "I enjoy securing systems and analyzing vulnerabilities."
     }
 
-    query_text = data.free_text or prototypes.get(pred_label, "")
+    # 5️⃣ Use TOP career intent for semantic retrieval
+    query_text = prototypes.get(top3[0]["career"], "")
     q_emb = sbert.encode([query_text], convert_to_numpy=True)
     q_emb_norm = q_emb / (np.linalg.norm(q_emb, axis=1, keepdims=True) + 1e-10)
 
+    # 6️⃣ Retrieve similar careers/resources
     if use_faiss:
         _, I = faiss_index.search(q_emb_norm, 5)
     else:
         _, I = nn.kneighbors(q_emb, n_neighbors=5)
 
-    suggestions = []
-    for idx in I[0]:
-        row = careers.iloc[idx]
-        suggestions.append({
-            "id": int(row["career_id"]),
-            "title": row["title"],
-            "description": row["description"],
-            "category": row["category"]
-        })
+    suggestions = [
+        {
+            "id": int(careers.iloc[idx]["career_id"]),
+            "title": careers.iloc[idx]["title"],
+            "description": careers.iloc[idx]["description"],
+            "category": careers.iloc[idx]["category"]
+        }
+        for idx in I[0]
+    ]
 
+    # 7️⃣ Final response
     return {
-        "predicted_category": pred_label,
+        "top_3_careers": top3,
         "suggestions": suggestions
     }
+
 
 
 # =========================================================

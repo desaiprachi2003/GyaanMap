@@ -77,7 +77,7 @@
     ]
   },
   "_meta": {
-    "last_updated": 1769330012
+    "last_updated": 1769698735
   },
   "Mechanical Engineering": {
     "career": "Mechanical Engineering",
@@ -430,6 +430,243 @@
           {
             "title": "Develop a Simple REST API",
             "link": "https://www.youtube.com/results?search_query=Develop+a+Simple+REST+API+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "UI/UX Designer": {
+    "career": "UI/UX Designer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to UI/UX Design",
+            "link": "https://www.interaction-design.org/literature/topics/ux-design"
+          },
+          {
+            "title": "Design Principles (Color, Typography, Layout)",
+            "link": "https://www.smashingmagazine.com/design-principles/"
+          },
+          {
+            "title": "Basic Tools (Figma, Adobe XD)",
+            "link": "https://www.figma.com/resources/learn-design/"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "User Research & Personas",
+            "link": "https://www.nngroup.com/articles/persona/"
+          },
+          {
+            "title": "Wireframing & Prototyping",
+            "link": "https://uxplanet.org/wireframing-for-beginners-a5b6f0168ff1"
+          },
+          {
+            "title": "Usability Testing",
+            "link": "https://www.usability.gov/how-to-and-tools/methods/usability-testing.html"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Interaction Design & Microinteractions",
+            "link": "https://uxdesign.cc/microinteractions-the-secret-to-great-ux-design-4c3dc4b3f5f1"
+          },
+          {
+            "title": "Design Systems",
+            "link": "https://www.designsystems.com/"
+          },
+          {
+            "title": "Accessibility in Design",
+            "link": "https://www.w3.org/WAI/tips/designing/"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Redesign a Website or App",
+            "link": "https://www.youtube.com/results?search_query=Redesign+a+Website+or+App+tutorial"
+          },
+          {
+            "title": "Create a Portfolio Case Study",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Portfolio+Case+Study+tutorial"
+          },
+          {
+            "title": "Collaborate on a Real-World Project",
+            "link": "https://www.youtube.com/results?search_query=Collaborate+on+a+Real-World+Project+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Product Designer": {
+    "career": "Product Designer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Design Principles",
+            "link": "https://www.youtube.com/results?search_query=Introduction+to+Design+Principles+tutorial"
+          },
+          {
+            "title": "Basics of User Experience (UX)",
+            "link": "https://www.youtube.com/results?search_query=Basics+of+User+Experience+(UX)+tutorial"
+          },
+          {
+            "title": "Introduction to User Interface (UI) Design",
+            "link": "https://www.youtube.com/results?search_query=Introduction+to+User+Interface+(UI)+Design+tutorial"
+          },
+          {
+            "title": "Figma for Beginners",
+            "link": "https://www.youtube.com/results?search_query=Figma+for+Beginners+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "UX Research Methods",
+            "link": "https://www.youtube.com/results?search_query=UX+Research+Methods+tutorial"
+          },
+          {
+            "title": "Wireframing and Prototyping",
+            "link": "https://www.youtube.com/results?search_query=Wireframing+and+Prototyping+tutorial"
+          },
+          {
+            "title": "Design Systems",
+            "link": "https://www.youtube.com/results?search_query=Design+Systems+tutorial"
+          },
+          {
+            "title": "Accessibility in Design",
+            "link": "https://www.youtube.com/results?search_query=Accessibility+in+Design+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced Interaction Design",
+            "link": "https://www.youtube.com/results?search_query=Advanced+Interaction+Design+tutorial"
+          },
+          {
+            "title": "Designing for Mobile and Responsive Web",
+            "link": "https://www.youtube.com/results?search_query=Designing+for+Mobile+and+Responsive+Web+tutorial"
+          },
+          {
+            "title": "Data-Driven Design",
+            "link": "https://www.youtube.com/results?search_query=Data-Driven+Design+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Full Stack Developer": {
+    "career": "Full Stack Developer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "HTML & CSS",
+            "link": "https://www.youtube.com/results?search_query=HTML+&+CSS+tutorial"
+          },
+          {
+            "title": "JavaScript Fundamentals",
+            "link": "https://www.youtube.com/results?search_query=JavaScript+Fundamentals+tutorial"
+          },
+          {
+            "title": "Git & GitHub",
+            "link": "https://www.youtube.com/results?search_query=Git+&+GitHub+tutorial"
+          },
+          {
+            "title": "Basic Command Line",
+            "link": "https://www.youtube.com/results?search_query=Basic+Command+Line+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Frontend Framework (React, Vue, or Angular)",
+            "link": "https://www.youtube.com/results?search_query=Frontend+Framework+(React,+Vue,+or+Angular)+tutorial"
+          },
+          {
+            "title": "Backend Basics (Node.js + Express)",
+            "link": "https://www.youtube.com/results?search_query=Backend+Basics+(Node.js+++Express)+tutorial"
+          },
+          {
+            "title": "Databases (SQL & NoSQL)",
+            "link": "https://www.youtube.com/results?search_query=Databases+(SQL+&+NoSQL)+tutorial"
+          },
+          {
+            "title": "RESTful APIs",
+            "link": "https://www.youtube.com/results?search_query=RESTful+APIs+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Authentication & Authorization",
+            "link": "https://www.youtube.com/results?search_query=Authentication+&+Authorization+tutorial"
+          },
+          {
+            "title": "Advanced Databases",
+            "link": "https://www.youtube.com/results?search_query=Advanced+Databases+tutorial"
+          },
+          {
+            "title": "DevOps Basics (Docker, CI/CD)",
+            "link": "https://www.youtube.com/results?search_query=DevOps+Basics+(Docker,+CI/CD)+tutorial"
+          },
+          {
+            "title": "GraphQL",
+            "link": "https://www.youtube.com/results?search_query=GraphQL+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a CRUD App",
+            "link": "https://www.youtube.com/results?search_query=Build+a+CRUD+App+tutorial"
+          },
+          {
+            "title": "Create a Full Stack Social Media Clone",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Full+Stack+Social+Media+Clone+tutorial"
+          },
+          {
+            "title": "Develop an E-Commerce Site",
+            "link": "https://www.youtube.com/results?search_query=Develop+an+E-Commerce+Site+tutorial"
+          },
+          {
+            "title": "Contribute to Open Source",
+            "link": "https://www.youtube.com/results?search_query=Contribute+to+Open+Source+tutorial"
           }
         ]
       }
