@@ -8,10 +8,10 @@ from sklearn.metrics import accuracy_score, classification_report
 # ===============================
 # LOAD DATA
 # ===============================
-df = pd.read_csv("csit_riasec_dataset.csv")
+df = pd.read_csv("csit_riasec_interest_dataset.csv")
 
 X = df[["R", "I", "A", "S", "E", "C"]]
-y = df["career"]
+y = df["interest_label"]
 
 # ===============================
 # ENCODE LABELS

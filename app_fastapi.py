@@ -146,12 +146,46 @@ def predict(data: RIASECInput):
 
     # 4️⃣ CS/IT-only intent prototypes (for SBERT)
     prototypes = {
-        "Backend Developer": "I enjoy APIs, databases, and server-side systems.",
-        "Frontend Developer": "I enjoy UI design and interactive web experiences.",
-        "Data Scientist": "I enjoy data analysis, statistics, and machine learning.",
-        "DevOps Engineer": "I enjoy CI/CD pipelines, cloud infrastructure, and automation.",
-        "Cybersecurity Analyst": "I enjoy securing systems and analyzing vulnerabilities."
+    # Software Development
+    "Backend Developer": "I enjoy APIs, databases, authentication, and server-side programming.",
+    "Frontend Developer": "I enjoy building user interfaces, web animations, and interactive applications.",
+    "Full Stack Developer": "I enjoy working on both frontend interfaces and backend systems.",
+    "Mobile App Developer": "I enjoy creating Android and iOS mobile applications.",
+    "Game Developer": "I enjoy game engines, graphics, and interactive gameplay mechanics.",
+
+    # Data & AI
+    "Data Analyst": "I enjoy analyzing data, dashboards, reports, and extracting insights.",
+    "Data Scientist": "I enjoy statistics, machine learning, and data-driven problem solving.",
+    "Machine Learning Engineer": "I enjoy building, training, and deploying ML models.",
+    "AI Engineer": "I enjoy artificial intelligence, neural networks, and intelligent systems.",
+    "Big Data Engineer": "I enjoy large-scale data pipelines and distributed systems.",
+
+    # Cloud & DevOps
+    "DevOps Engineer": "I enjoy CI/CD pipelines, automation, and cloud infrastructure.",
+    "Cloud Engineer": "I enjoy designing scalable systems using cloud platforms like AWS.",
+    "Site Reliability Engineer": "I enjoy monitoring, reliability engineering, and system scalability.",
+    "Solutions Architect": "I enjoy designing end-to-end technical architectures.",
+    "Systems Engineer": "I enjoy maintaining operating systems and infrastructure.",
+
+    # Security
+    "Cybersecurity Analyst": "I enjoy protecting systems and monitoring security threats.",
+    "Security Engineer": "I enjoy building secure architectures and defense mechanisms.",
+    "IT Support Engineer": "I enjoy troubleshooting technical issues and helping users.",
+
+    # Quality Assurance
+    "QA Engineer": "I enjoy testing software and ensuring product quality.",
+    "Automation Test Engineer": "I enjoy building automated testing frameworks.",
+
+    # Design
+    "UI/UX Designer": "I enjoy designing intuitive and user-friendly interfaces.",
+    "Product Designer": "I enjoy designing product flows and user experiences.",
+
+    # Management
+    "Product Manager": "I enjoy defining product vision and managing requirements.",
+    "Technical Program Manager": "I enjoy coordinating large technical projects.",
+    "Tech Lead": "I enjoy leading engineering teams and designing architecture."
     }
+
 
     # 5️⃣ Use TOP career intent for semantic retrieval
     query_text = prototypes.get(top3[0]["career"], "")

@@ -77,7 +77,7 @@
     ]
   },
   "_meta": {
-    "last_updated": 1769698735
+    "last_updated": 1769783607
   },
   "Mechanical Engineering": {
     "career": "Mechanical Engineering",
@@ -667,6 +667,285 @@
           {
             "title": "Contribute to Open Source",
             "link": "https://www.youtube.com/results?search_query=Contribute+to+Open+Source+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Tech Lead": {
+    "career": "Tech Lead",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Programming Fundamentals",
+            "link": "https://www.youtube.com/results?search_query=Programming+Fundamentals+tutorial"
+          },
+          {
+            "title": "Version Control with Git",
+            "link": "https://www.youtube.com/results?search_query=Version+Control+with+Git+tutorial"
+          },
+          {
+            "title": "Basic Command Line",
+            "link": "https://www.youtube.com/results?search_query=Basic+Command+Line+tutorial"
+          },
+          {
+            "title": "Software Development Lifecycle",
+            "link": "https://www.youtube.com/results?search_query=Software+Development+Lifecycle+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Data Structures & Algorithms",
+            "link": "https://www.youtube.com/results?search_query=Data+Structures+&+Algorithms+tutorial"
+          },
+          {
+            "title": "System Design Basics",
+            "link": "https://www.youtube.com/results?search_query=System+Design+Basics+tutorial"
+          },
+          {
+            "title": "Code Reviews & Best Practices",
+            "link": "https://www.youtube.com/results?search_query=Code+Reviews+&+Best+Practices+tutorial"
+          },
+          {
+            "title": "Agile & Scrum Methodologies",
+            "link": "https://www.youtube.com/results?search_query=Agile+&+Scrum+Methodologies+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced System Design",
+            "link": "https://www.youtube.com/results?search_query=Advanced+System+Design+tutorial"
+          },
+          {
+            "title": "Leadership & Mentorship",
+            "link": "https://www.youtube.com/results?search_query=Leadership+&+Mentorship+tutorial"
+          },
+          {
+            "title": "Technical Decision-Making",
+            "link": "https://www.youtube.com/results?search_query=Technical+Decision-Making+tutorial"
+          },
+          {
+            "title": "Stakeholder Communication",
+            "link": "https://www.youtube.com/results?search_query=Stakeholder+Communication+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Lead a Small Team Project",
+            "link": "https://www.youtube.com/results?search_query=Lead+a+Small+Team+Project+tutorial"
+          },
+          {
+            "title": "Refactor Legacy Code",
+            "link": "https://www.youtube.com/results?search_query=Refactor+Legacy+Code+tutorial"
+          },
+          {
+            "title": "Design a Scalable System",
+            "link": "https://www.youtube.com/results?search_query=Design+a+Scalable+System+tutorial"
+          },
+          {
+            "title": "Resolve Team Conflicts",
+            "link": "https://www.youtube.com/results?search_query=Resolve+Team+Conflicts+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Game Developer": {
+    "career": "Game Developer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Programming Basics",
+            "link": "https://www.youtube.com/results?search_query=Programming+Basics+tutorial"
+          },
+          {
+            "title": "Math for Games",
+            "link": "https://www.youtube.com/results?search_query=Math+for+Games+tutorial"
+          },
+          {
+            "title": "Game Design Principles",
+            "link": "https://www.youtube.com/results?search_query=Game+Design+Principles+tutorial"
+          },
+          {
+            "title": "Version Control",
+            "link": "https://www.youtube.com/results?search_query=Version+Control+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Game Engines",
+            "link": "https://www.youtube.com/results?search_query=Game+Engines+tutorial"
+          },
+          {
+            "title": "2D/3D Graphics",
+            "link": "https://www.youtube.com/results?search_query=2D/3D+Graphics+tutorial"
+          },
+          {
+            "title": "Scripting in Games",
+            "link": "https://www.youtube.com/results?search_query=Scripting+in+Games+tutorial"
+          },
+          {
+            "title": "Sound & Music",
+            "link": "https://www.youtube.com/results?search_query=Sound+&+Music+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced Game Mechanics",
+            "link": "https://www.youtube.com/results?search_query=Advanced+Game+Mechanics+tutorial"
+          },
+          {
+            "title": "Optimization",
+            "link": "https://www.youtube.com/results?search_query=Optimization+tutorial"
+          },
+          {
+            "title": "Shaders & VFX",
+            "link": "https://www.youtube.com/results?search_query=Shaders+&+VFX+tutorial"
+          },
+          {
+            "title": "Publishing",
+            "link": "https://www.youtube.com/results?search_query=Publishing+tutorial"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a 2D Platformer",
+            "link": "https://www.youtube.com/results?search_query=Build+a+2D+Platformer+tutorial"
+          },
+          {
+            "title": "Create a Simple 3D Game",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Simple+3D+Game+tutorial"
+          },
+          {
+            "title": "Develop a Multiplayer Prototype",
+            "link": "https://www.youtube.com/results?search_query=Develop+a+Multiplayer+Prototype+tutorial"
+          },
+          {
+            "title": "Contribute to Open-Source Game Projects",
+            "link": "https://www.youtube.com/results?search_query=Contribute+to+Open-Source+Game+Projects+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Mobile App Developer": {
+    "career": "Mobile App Developer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Programming",
+            "link": "https://www.codecademy.com/learn/learn-how-to-code"
+          },
+          {
+            "title": "Basics of HTML and CSS",
+            "link": "https://www.w3schools.com/html/"
+          },
+          {
+            "title": "JavaScript Fundamentals",
+            "link": "https://javascript.info/"
+          },
+          {
+            "title": "Introduction to Mobile Development",
+            "link": "https://developer.android.com/guide"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "React Native Basics",
+            "link": "https://reactnative.dev/docs/getting-started"
+          },
+          {
+            "title": "Flutter Basics",
+            "link": "https://flutter.dev/docs/get-started/install"
+          },
+          {
+            "title": "RESTful APIs and JSON",
+            "link": "https://www.restapitutorial.com/"
+          },
+          {
+            "title": "Version Control with Git",
+            "link": "https://git-scm.com/doc"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced React Native",
+            "link": "https://reactnative.dev/docs/accessibility"
+          },
+          {
+            "title": "Advanced Flutter",
+            "link": "https://flutter.dev/docs/development/ui/widgets-intro"
+          },
+          {
+            "title": "Firebase Integration",
+            "link": "https://firebase.google.com/docs"
+          },
+          {
+            "title": "App Deployment (Google Play & App Store)",
+            "link": "https://developer.android.com/studio/publish"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a To-Do List App",
+            "link": "https://www.youtube.com/results?search_query=Build+a+To-Do+List+App+tutorial"
+          },
+          {
+            "title": "Create a Weather App with API",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Weather+App+with+API+tutorial"
+          },
+          {
+            "title": "Develop a Chat App with Firebase",
+            "link": "https://www.youtube.com/results?search_query=Develop+a+Chat+App+with+Firebase+tutorial"
+          },
+          {
+            "title": "Build a Portfolio App with Flutter",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Portfolio+App+with+Flutter+tutorial"
           }
         ]
       }
