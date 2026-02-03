@@ -4,14 +4,39 @@ from xgboost import XGBClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
+from sklearn.utils import resample
 
 # ===============================
 # LOAD DATA
 # ===============================
 df = pd.read_csv("csit_riasec_interest_dataset.csv")
 
-X = df[["R", "I", "A", "S", "E", "C"]]
-y = df["interest_label"]
+# ===============================
+# UPSAMPLE ALL MINORITY CLASSES
+# ===============================
+# Find the size of the largest class
+max_size = df["interest_label"].value_counts().max()
+
+# Upsample each class to match the largest
+df_upsampled = pd.DataFrame()
+for label in df["interest_label"].unique():
+    df_label = df[df["interest_label"] == label]
+    df_label_upsampled = resample(
+        df_label,
+        replace=True,
+        n_samples=max_size,
+        random_state=42
+    )
+    df_upsampled = pd.concat([df_upsampled, df_label_upsampled])
+
+# Shuffle the dataset
+df_upsampled = df_upsampled.sample(frac=1, random_state=42).reset_index(drop=True)
+
+# ===============================
+# FEATURES & TARGET
+# ===============================
+X = df_upsampled[["R", "I", "A", "S", "E", "C"]]
+y = df_upsampled["interest_label"]
 
 # ===============================
 # ENCODE LABELS
@@ -52,7 +77,7 @@ xgb.fit(X_train, y_train)
 y_pred = xgb.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 
-print("\n MODEL ACCURACY:", round(acc * 100, 2), "%\n")
+print("\nMODEL ACCURACY:", round(acc * 100, 2), "%\n")
 print(classification_report(y_test, y_pred, target_names=le.classes_))
 
 # ===============================
@@ -61,4 +86,4 @@ print(classification_report(y_test, y_pred, target_names=le.classes_))
 joblib.dump(xgb, "xgb_model.joblib")
 joblib.dump(le, "label_encoder.joblib")
 
-print(" CS/IT XGBoost model trained & saved")
+print("✅ CS/IT XGBoost model trained & saved (all classes balanced)")

@@ -129,13 +129,14 @@ career_to_interest = {
     "UI/UX Designer": "Design",
     "Frontend Developer": "Design",
     "Product Designer": "Design",
-    "Game Developer": "Design",
+    "Game Developer": "Technical",
 
     "Backend Developer": "Technical",
     "Full Stack Developer": "Technical",
     "DevOps Engineer": "Technical",
     "Systems Engineer": "Technical",
     "Mobile App Developer": "Technical",
+    "Site Reliability Engineer": "Technical",
 
     "Data Analyst": "Data",
     "Data Scientist": "Data",
@@ -146,6 +147,7 @@ career_to_interest = {
     "Product Manager": "Management",
     "Technical Program Manager": "Management",
     "Tech Lead": "Management",
+    "Solutions Architect": "Management",
 
     "QA Engineer": "QualitySupport",
     "Automation Test Engineer": "QualitySupport",
@@ -157,6 +159,7 @@ career_to_interest = {
 }
 
 careers["interest_label"] = careers["title"].map(career_to_interest)
+careers["interest_label"] = careers["interest_label"].str.strip().str.lower()
 missing = careers[careers["interest_label"].isna()]["title"].unique()
 if len(missing) > 0:
     print("⚠️ Unmapped careers found:", missing)
@@ -193,177 +196,91 @@ def quiz_score(data: QuizAnswers):
 
 
 
-# @app.post("/predict")
-# def predict(data: RIASECInput):
-#     riasec = [
-#     data.R,
-#     data.I,
-#     data.A,
-#     data.S,
-#     data.E,
-#     data.C]
-
-#     print("INPUT RIASEC:", riasec)
-
-#     print("RIASEC RECEIVED:", data.dict())
 
 
-#     # 1️⃣ Build ML input (RIASEC → DataFrame)
-#     X = pd.DataFrame([{
-#         "R": data.R,
-#         "I": data.I,
-#         "A": data.A,
-#         "S": data.S,
-#         "E": data.E,
-#         "C": data.C
-#     }])
-
-#     # 2️⃣ Get probability scores from XGBoost
-#     probs = xgb.predict_proba(X)[0]   # (num_classes,)
-#     print("PROBS:", probs)
-#     print("TOP CAREER:", le.inverse_transform([int(np.argmax(probs))])[0])
-
-#     # -----------------------------
-# # Career → Interest aggregation
-# # -----------------------------
-#    # -----------------------------
-# # Answer-based Interest Scoring
-# # -----------------------------
- 
-
-
-
-#     # 3️⃣ Pick TOP 3 careers
-#     # -----------------------------
-# # 3️⃣ Pick TOP 3 INTERESTS
-# # -----------------------------
-#     top3_idx = np.argsort(probs)[-3:][::-1]
-
-#     top3_interests = [
-#     {
-#         "interest": le.inverse_transform([idx])[0],
-#         "confidence": round(float(probs[idx]), 3)
-#     }
-#     for idx in top3_idx]
-
-
-#     # 4️⃣ CS/IT-only intent prototypes (for SBERT)
-#     prototypes = {
-#     # Software Development
-#     "Backend Developer": "I enjoy APIs, databases, authentication, and server-side programming.",
-#     "Frontend Developer": "I enjoy building user interfaces, web animations, and interactive applications.",
-#     "Full Stack Developer": "I enjoy working on both frontend interfaces and backend systems.",
-#     "Mobile App Developer": "I enjoy creating Android and iOS mobile applications.",
-#     "Game Developer": "I enjoy game engines, graphics, and interactive gameplay mechanics.",
-
-#     # Data & AI
-#     "Data Analyst": "I enjoy analyzing data, dashboards, reports, and extracting insights.",
-#     "Data Scientist": "I enjoy statistics, machine learning, and data-driven problem solving.",
-#     "Machine Learning Engineer": "I enjoy building, training, and deploying ML models.",
-#     "AI Engineer": "I enjoy artificial intelligence, neural networks, and intelligent systems.",
-#     "Big Data Engineer": "I enjoy large-scale data pipelines and distributed systems.",
-
-#     # Cloud & DevOps
-#     "DevOps Engineer": "I enjoy CI/CD pipelines, automation, and cloud infrastructure.",
-#     "Cloud Engineer": "I enjoy designing scalable systems using cloud platforms like AWS.",
-#     "Site Reliability Engineer": "I enjoy monitoring, reliability engineering, and system scalability.",
-#     "Solutions Architect": "I enjoy designing end-to-end technical architectures.",
-#     "Systems Engineer": "I enjoy maintaining operating systems and infrastructure.",
-
-#     # Security
-#     "Cybersecurity Analyst": "I enjoy protecting systems and monitoring security threats.",
-#     "Security Engineer": "I enjoy building secure architectures and defense mechanisms.",
-#     "IT Support Engineer": "I enjoy troubleshooting technical issues and helping users.",
-
-#     # Quality Assurance
-#     "QA Engineer": "I enjoy testing software and ensuring product quality.",
-#     "Automation Test Engineer": "I enjoy building automated testing frameworks.",
-
-#     # Design
-#     "UI/UX Designer": "I enjoy designing intuitive and user-friendly interfaces.",
-#     "Product Designer": "I enjoy designing product flows and user experiences.",
-
-#     # Management
-#     "Product Manager": "I enjoy defining product vision and managing requirements.",
-#     "Technical Program Manager": "I enjoy coordinating large technical projects.",
-#     "Tech Lead": "I enjoy leading engineering teams and designing architecture."
-#     }
-#     #  Use TOP predicted career intent for semantic retrieval
-#     top_idx = int(np.argmax(probs))
-#     top_career = le.inverse_transform([top_idx])[0]
-
-#     query_text = prototypes.get(top_career, top_career)
-
-#     q_emb = sbert.encode([query_text], convert_to_numpy=True)
-
-
-#     q_emb_norm = q_emb / (np.linalg.norm(q_emb, axis=1, keepdims=True) + 1e-10)
-
-#     #  Retrieve similar careers/resources
-#     if use_faiss:
-#         _, I = faiss_index.search(q_emb_norm, 5)
-#     else:
-#         _, I = nn.kneighbors(q_emb, n_neighbors=5)
-
-#     suggestions = [
-#         {
-#             "id": int(careers.iloc[idx]["career_id"]),
-#             "title": careers.iloc[idx]["title"],
-#             "description": careers.iloc[idx]["description"],
-#             "category": careers.iloc[idx]["category"]
-#         }
-#         for idx in I[0]
-#     ]
-
-#     #  Final response
-#     return {
-#     "top_3_careers": top3_interests,
-#     "suggestions": suggestions,
-#     "debug_top_career": top_career}
 
 @app.post("/predict")
 def predict(riasec: dict):
-    # 1️⃣ Build input
-    X = np.array([[riasec["R"], riasec["I"], riasec["A"],
-                   riasec["S"], riasec["E"], riasec["C"]]])
+    """
+    Input: RIASEC scores dict, e.g. {"R":5,"I":6,"A":20,"S":6,"E":5,"C":4}
+    Output: top 3 interests + best matching careers
+    """
+
+    # 1️⃣ Build input for XGBoost
+    X_input = np.array([[riasec["R"], riasec["I"], riasec["A"],
+                         riasec["S"], riasec["E"], riasec["C"]]])
 
     # 2️⃣ Predict probabilities
-    probs = model.predict_proba(X)[0]
+    probs = model.predict_proba(X_input)[0]
     interest_labels = label_encoder.classes_
 
-    # 3️⃣ Pair interest with confidence and pick top 3
-    interest_scores = [
-        {"interest": interest_labels[i], "confidence": float(probs[i])}
-        for i in range(len(interest_labels))
-    ]
-    interest_scores.sort(key=lambda x: x["confidence"], reverse=True)
-    top_3_interests = interest_scores[:3]
+    # 3️⃣ Combine XGBoost probability + RIASEC trait scores
+    interest_to_traits = {
+    "Technical": ["R", "I"],
+    "Data": ["R", "I"],
+    "Design": ["A", "I"],
+    "Management": ["E", "S"],
+    "QualitySupport": ["S", "C"],
+    "SecurityCloud": ["R", "S"]}
 
-    # 4️⃣ Generate embeddings for the user's top interest descriptions
+
+    weighted_scores = []
+    for i, interest in enumerate(interest_labels):
+        traits = interest_to_traits.get(interest, [])
+        # trait_score = sum([riasec[t] for t in traits])
+        trait_score = sum(riasec.get(t, 0) or 0 for t in traits)
+
+        # Make RIASEC traits dominate more
+        combined_score = trait_score + (float(probs[i]) * 0.1)  # <-- 0.1 factor reduces XGBoost bias
+
+        weighted_scores.append({
+        "interest": interest,
+        "score": combined_score,
+        "confidence": float(probs[i])
+    })
+
+# Sort by combined score
+    weighted_scores.sort(key=lambda x: x["score"], reverse=True)
+    top_3_interests = weighted_scores[:3]
+    # 🔹 Take ONLY the top predicted interest
+    top_interest = weighted_scores[0]["interest"]
+
+
+
+    # 4️⃣ SBERT career matching (using prototypes)
+    # 4️⃣ SBERT career matching — ONLY for top interest
+    matched_careers = careers[careers["interest_label"] == top_interest.lower()]
+
+
     suggestions = []
-    for item in top_3_interests:
-        interest = item["interest"]
-        # Get all careers matching this interest
-        matched_careers = careers[careers["interest_label"] == interest]
 
-        if matched_careers.empty:
-            continue
+    if not matched_careers.empty:
+        career_texts = (
+        matched_careers["title"] + ". " +
+        matched_careers["description"] + ". Category: " +
+        matched_careers["category"]).tolist()
 
-        # SBERT embeddings for these careers
-        career_texts = matched_careers["title"].tolist()
-        career_embs = sbert.encode(career_texts, convert_to_numpy=True)
-        career_embs_norm = career_embs / (np.linalg.norm(career_embs, axis=1, keepdims=True) + 1e-10)
+        career_embs = sbert.encode(
+        career_texts,
+        convert_to_numpy=True,
+        normalize_embeddings=True)
 
-        # Create a "query" from the interest name (or top interest + description)
-        query_text = interest  # simple version, can be extended with description if available
-        query_emb = sbert.encode([query_text], convert_to_numpy=True)
-        query_emb_norm = query_emb / (np.linalg.norm(query_emb, axis=1, keepdims=True) + 1e-10)
+        query_text = (
+        f"{top_interest} career. "
+        f"R: {riasec['R']}, I: {riasec['I']}, A: {riasec['A']}, "
+        f"S: {riasec['S']}, E: {riasec['E']}, C: {riasec['C']}")
 
-        # Compute cosine similarity
-        sims = np.dot(career_embs_norm, query_emb_norm.T).squeeze()
-        best_idx = int(np.argmax(sims))
+        query_emb = sbert.encode(
+        [query_text],
+        convert_to_numpy=True,
+        normalize_embeddings=True)
 
-        row = matched_careers.iloc[best_idx]
+        sims = np.dot(career_embs, query_emb.T).squeeze()
+
+        top_indices = sims.argsort()[-3:][::-1]  # 🔥 TOP 3 careers
+
+    for idx in top_indices:
+        row = matched_careers.iloc[idx]
         suggestions.append({
             "id": int(row["career_id"]),
             "title": row["title"],
@@ -371,10 +288,14 @@ def predict(riasec: dict):
             "category": row["category"]
         })
 
+
+    print("📥 RECEIVED RIASEC:", riasec)
+
     return {
-        "top_3_careers": top_3_interests,
-        "suggestions": suggestions
-    }
+    "top_interest": top_interest,
+    "top_3_careers": top_3_interests,
+    "suggestions": suggestions}
+
 
 
 

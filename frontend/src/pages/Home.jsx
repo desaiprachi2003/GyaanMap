@@ -83,7 +83,7 @@ export default function Home() {
                 >
                   Learn More
                 </button> */}
-                <button
+                {/* <button
   aria-label="Learn More"
   className="inline-flex items-center gap-3 px-6 py-3 rounded-full 
     border border-gray-200 text-gray-700 bg-white 
@@ -91,7 +91,7 @@ export default function Home() {
     hover:bg-green-500 hover:text-white hover:scale-105 hover:shadow-lg"
 >
   Learn More
-</button>
+</button> */}
 
               </div>
             </div>

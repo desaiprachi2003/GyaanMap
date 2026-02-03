@@ -49,11 +49,52 @@ export default function ResultDetails() {
     fetchRoadmap();
   }, [career]);
 
+// const handleSaveCareer = async () => {
+//   try {
+//     const token = localStorage.getItem("token");
+//     if (!token) {
+//       alert("Please login to save careers");
+//       return;
+//     }
+
+//     const res = await fetch("http://localhost:5000/api/careers", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`,
+//       },
+//       body: JSON.stringify({
+//         title: career.title,
+//         description: career.description,
+//         roadmap: roadmap,
+//       }),
+//     });
+
+//     // 🔥 HANDLE DUPLICATE SAVE
+//     if (res.status === 409) {
+//       alert("Career already saved ❤️");
+//       setSaved(true);
+//       return;
+//     }
+
+//     if (!res.ok) {
+//       throw new Error("Save failed");
+//     }
+
+//     setSaved(true);
+//     alert("Career saved successfully ❤️");
+
+//   } catch (err) {
+//     console.error("Save error:", err);
+//     alert("Could not save career");
+//   }
+// };
 const handleSaveCareer = async () => {
   try {
     const token = localStorage.getItem("token");
+
     if (!token) {
-      alert("Please login to save careers");
+      toast.info("Please login to save careers 🔐");
       return;
     }
 
@@ -70,10 +111,10 @@ const handleSaveCareer = async () => {
       }),
     });
 
-    // 🔥 HANDLE DUPLICATE SAVE
+    // 🔥 Already saved
     if (res.status === 409) {
-      alert("Career already saved ❤️");
       setSaved(true);
+      toast.warning("Career already saved ❤️");
       return;
     }
 
@@ -82,13 +123,21 @@ const handleSaveCareer = async () => {
     }
 
     setSaved(true);
-    alert("Career saved successfully ❤️");
+    // toast.success("Career saved successfully 🎉");
+    toast.success("Career saved successfully 🎉", {
+  style: {
+    background: "#7c3aed",
+    color: "#fff",
+  },
+});
+
 
   } catch (err) {
     console.error("Save error:", err);
-    alert("Could not save career");
+    toast.error("Could not save career ❌");
   }
 };
+
 
 
 

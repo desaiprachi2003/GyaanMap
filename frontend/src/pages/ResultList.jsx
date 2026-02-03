@@ -28,7 +28,7 @@ export default function ResultList() {
           Based on your responses, here are your best CS/IT career matches
         </p>
 
-        <div className="flex flex-wrap gap-3">
+        {/* <div className="flex flex-wrap gap-3">
           {predictions.top_3_careers.map((c, index) => (
             <div
               key={c.interest}
@@ -42,12 +42,13 @@ export default function ResultList() {
               {index + 1}. {c.interest} — {Math.round(c.confidence * 100)}%
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* ===== SUGGESTION CARDS ===== */}
       <div className="grid sm:grid-cols-2 gap-6">
-        {predictions.suggestions.map((career) => (
+        {predictions.suggestions.slice(0, 3).map((career) => (
+
           <button
             key={career.id}
             onClick={() =>
