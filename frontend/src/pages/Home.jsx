@@ -4,6 +4,8 @@ import heroImg from "../assets/hero.jpg";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast"; 
+import Chatbot from "../components/Chatbot";
+
 import {
   TrendingUp,
   Users,
@@ -211,6 +213,9 @@ export default function Home() {
 </button>
 
       </section>
+            {/* Floating Career Chatbot */}
+      <Chatbot />
+
    </motion.div>
   );
 }

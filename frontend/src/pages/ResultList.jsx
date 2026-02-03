@@ -8,7 +8,7 @@ export default function ResultList() {
   // ✅ CORRECT STATE ACCESS
   const predictions = location.state?.predictions;
 
-  if (!predictions || !predictions.suggestions || !predictions.top_3_careers) {
+  if (!predictions || !Array.isArray(predictions.suggestions)) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-500">
@@ -31,7 +31,7 @@ export default function ResultList() {
         <div className="flex flex-wrap gap-3">
           {predictions.top_3_careers.map((c, index) => (
             <div
-              key={c.career}
+              key={c.interest}
               className={`px-4 py-2 rounded-full text-sm font-semibold
                 ${
                   index === 0
@@ -39,7 +39,7 @@ export default function ResultList() {
                     : "bg-purple-100 text-purple-700"
                 }`}
             >
-              {index + 1}. {c.career} — {Math.round(c.confidence * 100)}%
+              {index + 1}. {c.interest} — {Math.round(c.confidence * 100)}%
             </div>
           ))}
         </div>

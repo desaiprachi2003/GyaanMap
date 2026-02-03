@@ -77,7 +77,7 @@
     ]
   },
   "_meta": {
-    "last_updated": 1769783607
+    "last_updated": 1770061347
   },
   "Mechanical Engineering": {
     "career": "Mechanical Engineering",
@@ -946,6 +946,455 @@
           {
             "title": "Build a Portfolio App with Flutter",
             "link": "https://www.youtube.com/results?search_query=Build+a+Portfolio+App+with+Flutter+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Frontend Developer": {
+    "career": "Frontend Developer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "HTML Basics",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML"
+          },
+          {
+            "title": "CSS Basics",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps"
+          },
+          {
+            "title": "JavaScript Basics",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps"
+          },
+          {
+            "title": "Git & GitHub",
+            "link": "https://www.freecodecamp.org/news/git-and-github-for-beginners/"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Responsive Design",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"
+          },
+          {
+            "title": "CSS Flexbox & Grid",
+            "link": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+          },
+          {
+            "title": "JavaScript DOM Manipulation",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          },
+          {
+            "title": "Basic APIs & Fetch",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Modern JavaScript (ES6+)",
+            "link": "https://www.freecodecamp.org/news/learn-modern-javascript/"
+          },
+          {
+            "title": "React.js Basics",
+            "link": "https://reactjs.org/docs/getting-started.html"
+          },
+          {
+            "title": "State Management (Redux)",
+            "link": "https://redux.js.org/introduction/getting-started"
+          },
+          {
+            "title": "Web Performance Optimization",
+            "link": "https://web.dev/learn/#performance"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a Personal Portfolio Website",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Personal+Portfolio+Website+tutorial"
+          },
+          {
+            "title": "Create a Todo App with React",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Todo+App+with+React+tutorial"
+          },
+          {
+            "title": "Develop a Weather App using APIs",
+            "link": "https://www.youtube.com/results?search_query=Develop+a+Weather+App+using+APIs+tutorial"
+          },
+          {
+            "title": "Clone a Popular Website (e.g., Twitter, Netflix)",
+            "link": "https://www.youtube.com/results?search_query=Clone+a+Popular+Website+(e.g.,+Twitter,+Netflix)+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Technical Program Manager": {
+    "career": "Technical Program Manager",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Project Management",
+            "link": "https://www.coursera.org/learn/project-management"
+          },
+          {
+            "title": "Basics of Agile and Scrum",
+            "link": "https://www.scrum.org/resources/what-is-scrum"
+          },
+          {
+            "title": "Technical Fundamentals for Program Managers",
+            "link": "https://www.udacity.com/course/technical-project-management--nd036"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Advanced Agile Methodologies",
+            "link": "https://www.coursera.org/learn/agile-atlassian-jira"
+          },
+          {
+            "title": "Stakeholder Management and Communication",
+            "link": "https://www.linkedin.com/learning/communication-foundations-3"
+          },
+          {
+            "title": "Risk Management and Mitigation",
+            "link": "https://www.pmi.org/learning/library/risk-management-fundamentals-7090"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Strategic Program Management",
+            "link": "https://www.coursera.org/learn/program-management"
+          },
+          {
+            "title": "Advanced Metrics and KPIs for Programs",
+            "link": "https://www.pmi.org/learning/library/program-performance-measurement-10152"
+          },
+          {
+            "title": "Leading Cross-Functional Teams",
+            "link": "https://www.linkedin.com/learning/leading-cross-functional-teams"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Plan and execute a small technical project using Agile",
+            "link": "https://www.youtube.com/results?search_query=Plan+and+execute+a+small+technical+project+using+Agile+tutorial"
+          },
+          {
+            "title": "Create a risk management plan for a hypothetical program",
+            "link": "https://www.youtube.com/results?search_query=Create+a+risk+management+plan+for+a+hypothetical+program+tutorial"
+          },
+          {
+            "title": "Lead a cross-functional team simulation or case study",
+            "link": "https://www.youtube.com/results?search_query=Lead+a+cross-functional+team+simulation+or+case+study+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Automation Test Engineer": {
+    "career": "Automation Test Engineer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Software Testing",
+            "link": "https://www.guru99.com/software-testing-introduction-importance.html"
+          },
+          {
+            "title": "Manual Testing Basics",
+            "link": "https://www.tutorialspoint.com/software_testing/index.htm"
+          },
+          {
+            "title": "Programming Fundamentals (Python/Java)",
+            "link": "https://www.codecademy.com/learn/learn-python"
+          },
+          {
+            "title": "Version Control (Git)",
+            "link": "https://git-scm.com/doc"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Test Automation Basics",
+            "link": "https://www.selenium.dev/documentation/"
+          },
+          {
+            "title": "Web Automation with Selenium",
+            "link": "https://www.guru99.com/selenium-tutorial.html"
+          },
+          {
+            "title": "API Testing (Postman/RestAssured)",
+            "link": "https://learning.postman.com/docs/getting-started/introduction/"
+          },
+          {
+            "title": "Test Frameworks (TestNG, JUnit, PyTest)",
+            "link": "https://testng.org/doc/"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Continuous Integration (CI/CD)",
+            "link": "https://www.jenkins.io/doc/"
+          },
+          {
+            "title": "Advanced Selenium (Page Object Model, Waits)",
+            "link": "https://www.browserstack.com/guide/page-object-model-in-selenium"
+          },
+          {
+            "title": "Performance Testing (JMeter)",
+            "link": "https://jmeter.apache.org/usermanual/index.html"
+          },
+          {
+            "title": "Mobile Automation (Appium)",
+            "link": "https://appium.io/docs/en/2.0/"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Automate a Web Application (E-commerce site)",
+            "link": "https://www.youtube.com/results?search_query=Automate+a+Web+Application+(E-commerce+site)+tutorial"
+          },
+          {
+            "title": "Build an API Testing Framework",
+            "link": "https://www.youtube.com/results?search_query=Build+an+API+Testing+Framework+tutorial"
+          },
+          {
+            "title": "Create a CI/CD Pipeline for Test Automation",
+            "link": "https://www.youtube.com/results?search_query=Create+a+CI/CD+Pipeline+for+Test+Automation+tutorial"
+          },
+          {
+            "title": "Develop a Mobile Test Automation Suite",
+            "link": "https://www.youtube.com/results?search_query=Develop+a+Mobile+Test+Automation+Suite+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Product Manager": {
+    "career": "Product Manager",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Product Management",
+            "link": "https://www.coursera.org/learn/introduction-product-management"
+          },
+          {
+            "title": "Basics of Agile and Scrum",
+            "link": "https://www.atlassian.com/agile"
+          },
+          {
+            "title": "Understanding User Needs",
+            "link": "https://www.nngroup.com/articles/user-needs/"
+          },
+          {
+            "title": "Market Research Fundamentals",
+            "link": "https://www.udemy.com/course/market-research/"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Product Roadmapping",
+            "link": "https://www.productplan.com/learn/product-roadmap/"
+          },
+          {
+            "title": "Prioritization Frameworks (RICE, MoSCoW)",
+            "link": "https://www.productboard.com/blog/prioritization-frameworks/"
+          },
+          {
+            "title": "Metrics and KPIs for PMs",
+            "link": "https://amplitude.com/blog/product-metrics"
+          },
+          {
+            "title": "Stakeholder Management",
+            "link": "https://www.mindtools.com/pages/article/newPPM_08.htm"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced Product Strategy",
+            "link": "https://www.romanpichler.com/blog/product-strategy/"
+          },
+          {
+            "title": "Data-Driven Decision Making",
+            "link": "https://www.udacity.com/course/data-product-manager-nanodegree--nd030"
+          },
+          {
+            "title": "Go-to-Market Strategies",
+            "link": "https://www.productmarketingalliance.com/go-to-market-strategy/"
+          },
+          {
+            "title": "Leadership for Product Managers",
+            "link": "https://www.intercom.com/blog/product-management-leadership/"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a Product Spec Document",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Product+Spec+Document+tutorial"
+          },
+          {
+            "title": "Conduct a Competitive Analysis",
+            "link": "https://www.youtube.com/results?search_query=Conduct+a+Competitive+Analysis+tutorial"
+          },
+          {
+            "title": "Create a Product Roadmap",
+            "link": "https://www.youtube.com/results?search_query=Create+a+Product+Roadmap+tutorial"
+          },
+          {
+            "title": "Launch a Mock MVP",
+            "link": "https://www.youtube.com/results?search_query=Launch+a+Mock+MVP+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Systems Engineer": {
+    "career": "Systems Engineer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Operating Systems",
+            "link": "https://www.geeksforgeeks.org/introduction-of-operating-system/"
+          },
+          {
+            "title": "Basics of Networking",
+            "link": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-computer-networking.html"
+          },
+          {
+            "title": "Command Line Basics",
+            "link": "https://ubuntu.com/tutorials/command-line-for-beginners"
+          },
+          {
+            "title": "Fundamentals of Hardware",
+            "link": "https://www.lifewire.com/computer-hardware-basics-4153587"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Linux System Administration",
+            "link": "https://www.redhat.com/en/topics/linux/what-is-linux-administration"
+          },
+          {
+            "title": "Windows Server Basics",
+            "link": "https://learn.microsoft.com/en-us/windows-server/administration/windows-server-basics"
+          },
+          {
+            "title": "Network Protocols and Security",
+            "link": "https://www.cloudflare.com/learning/network-layer/what-is-a-network-protocol/"
+          },
+          {
+            "title": "Scripting with Bash/Python",
+            "link": "https://www.codecademy.com/learn/learn-the-command-line"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Cloud Computing (AWS/Azure)",
+            "link": "https://aws.amazon.com/getting-started/"
+          },
+          {
+            "title": "Virtualization and Containers",
+            "link": "https://www.docker.com/resources/what-container/"
+          },
+          {
+            "title": "Advanced Networking (CCNA)",
+            "link": "https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html"
+          },
+          {
+            "title": "System Automation (Ansible/Puppet)",
+            "link": "https://www.redhat.com/en/topics/automation/what-is-ansible"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build a Home Lab with Raspberry Pi",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Home+Lab+with+Raspberry+Pi+tutorial"
+          },
+          {
+            "title": "Deploy a Web Server on Linux",
+            "link": "https://www.youtube.com/results?search_query=Deploy+a+Web+Server+on+Linux+tutorial"
+          },
+          {
+            "title": "Automate System Tasks with Python",
+            "link": "https://www.youtube.com/results?search_query=Automate+System+Tasks+with+Python+tutorial"
+          },
+          {
+            "title": "Set Up a Virtual Private Network (VPN)",
+            "link": "https://www.youtube.com/results?search_query=Set+Up+a+Virtual+Private+Network+(VPN)+tutorial"
           }
         ]
       }

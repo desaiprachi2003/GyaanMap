@@ -52,7 +52,7 @@ xgb.fit(X_train, y_train)
 y_pred = xgb.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 
-print("\n✅ MODEL ACCURACY:", round(acc * 100, 2), "%\n")
+print("\n MODEL ACCURACY:", round(acc * 100, 2), "%\n")
 print(classification_report(y_test, y_pred, target_names=le.classes_))
 
 # ===============================
@@ -61,4 +61,4 @@ print(classification_report(y_test, y_pred, target_names=le.classes_))
 joblib.dump(xgb, "xgb_model.joblib")
 joblib.dump(le, "label_encoder.joblib")
 
-print("✅ CS/IT XGBoost model trained & saved")
+print(" CS/IT XGBoost model trained & saved")

@@ -2,6 +2,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+import random
+
 
 import joblib
 import numpy as np
@@ -23,11 +25,14 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # =========================================================
@@ -39,8 +44,8 @@ app.add_middleware(
 # =========================================================
 
 # XGBoost career classifier (CS/IT only)
-xgb = joblib.load("xgb_model.joblib")
-le = joblib.load("label_encoder.joblib")
+model = joblib.load("xgb_model.joblib")
+label_encoder = joblib.load("label_encoder.joblib")
 
 # CS/IT careers metadata
 careers = pd.read_csv("careers_csit.csv")
@@ -66,6 +71,7 @@ except:
 # =========================================================
 # REQUEST MODELS
 # =========================================================
+
 
 class QuizAnswers(BaseModel):
     Q1: int
@@ -116,103 +122,262 @@ class RoadmapResponse(BaseModel):
 # =========================================================
 # CAREER PREDICTION API
 # =========================================================
+# -----------------------------
+# Career → Interest mapping
+# -----------------------------
+career_to_interest = {
+    "UI/UX Designer": "Design",
+    "Frontend Developer": "Design",
+    "Product Designer": "Design",
+    "Game Developer": "Design",
+
+    "Backend Developer": "Technical",
+    "Full Stack Developer": "Technical",
+    "DevOps Engineer": "Technical",
+    "Systems Engineer": "Technical",
+    "Mobile App Developer": "Technical",
+
+    "Data Analyst": "Data",
+    "Data Scientist": "Data",
+    "Machine Learning Engineer": "Data",
+    "AI Engineer": "Data",
+    "Big Data Engineer": "Data",
+
+    "Product Manager": "Management",
+    "Technical Program Manager": "Management",
+    "Tech Lead": "Management",
+
+    "QA Engineer": "QualitySupport",
+    "Automation Test Engineer": "QualitySupport",
+    "IT Support Engineer": "QualitySupport",
+
+    "Cybersecurity Analyst": "SecurityCloud",
+    "Security Engineer": "SecurityCloud",
+    "Cloud Engineer": "SecurityCloud"
+}
+
+careers["interest_label"] = careers["title"].map(career_to_interest)
+missing = careers[careers["interest_label"].isna()]["title"].unique()
+if len(missing) > 0:
+    print("⚠️ Unmapped careers found:", missing)
+
+@app.post("/quiz/score")
+def quiz_score(data: QuizAnswers):
+    # RIASEC score buckets
+    scores = {
+        "R": 0,
+        "I": 0,
+        "A": 0,
+        "S": 0,
+        "E": 0,
+        "C": 0
+    }
+
+    # Question → Trait mapping (ORDER MATTERS)
+    question_traits = [
+        "R","R","R","R",
+        "I","I","I","I",
+        "A","A","A","A",
+        "S","S","S","S",
+        "E","E","E","E",
+        "C","C","C","C"
+    ]
+
+    answers = data.dict(exclude={"free_text"})
+
+    for i, trait in enumerate(question_traits):
+        q_key = f"Q{i+1}"
+        scores[trait] += answers[q_key]
+
+    return scores
+
+
+
+# @app.post("/predict")
+# def predict(data: RIASECInput):
+#     riasec = [
+#     data.R,
+#     data.I,
+#     data.A,
+#     data.S,
+#     data.E,
+#     data.C]
+
+#     print("INPUT RIASEC:", riasec)
+
+#     print("RIASEC RECEIVED:", data.dict())
+
+
+#     # 1️⃣ Build ML input (RIASEC → DataFrame)
+#     X = pd.DataFrame([{
+#         "R": data.R,
+#         "I": data.I,
+#         "A": data.A,
+#         "S": data.S,
+#         "E": data.E,
+#         "C": data.C
+#     }])
+
+#     # 2️⃣ Get probability scores from XGBoost
+#     probs = xgb.predict_proba(X)[0]   # (num_classes,)
+#     print("PROBS:", probs)
+#     print("TOP CAREER:", le.inverse_transform([int(np.argmax(probs))])[0])
+
+#     # -----------------------------
+# # Career → Interest aggregation
+# # -----------------------------
+#    # -----------------------------
+# # Answer-based Interest Scoring
+# # -----------------------------
+ 
+
+
+
+#     # 3️⃣ Pick TOP 3 careers
+#     # -----------------------------
+# # 3️⃣ Pick TOP 3 INTERESTS
+# # -----------------------------
+#     top3_idx = np.argsort(probs)[-3:][::-1]
+
+#     top3_interests = [
+#     {
+#         "interest": le.inverse_transform([idx])[0],
+#         "confidence": round(float(probs[idx]), 3)
+#     }
+#     for idx in top3_idx]
+
+
+#     # 4️⃣ CS/IT-only intent prototypes (for SBERT)
+#     prototypes = {
+#     # Software Development
+#     "Backend Developer": "I enjoy APIs, databases, authentication, and server-side programming.",
+#     "Frontend Developer": "I enjoy building user interfaces, web animations, and interactive applications.",
+#     "Full Stack Developer": "I enjoy working on both frontend interfaces and backend systems.",
+#     "Mobile App Developer": "I enjoy creating Android and iOS mobile applications.",
+#     "Game Developer": "I enjoy game engines, graphics, and interactive gameplay mechanics.",
+
+#     # Data & AI
+#     "Data Analyst": "I enjoy analyzing data, dashboards, reports, and extracting insights.",
+#     "Data Scientist": "I enjoy statistics, machine learning, and data-driven problem solving.",
+#     "Machine Learning Engineer": "I enjoy building, training, and deploying ML models.",
+#     "AI Engineer": "I enjoy artificial intelligence, neural networks, and intelligent systems.",
+#     "Big Data Engineer": "I enjoy large-scale data pipelines and distributed systems.",
+
+#     # Cloud & DevOps
+#     "DevOps Engineer": "I enjoy CI/CD pipelines, automation, and cloud infrastructure.",
+#     "Cloud Engineer": "I enjoy designing scalable systems using cloud platforms like AWS.",
+#     "Site Reliability Engineer": "I enjoy monitoring, reliability engineering, and system scalability.",
+#     "Solutions Architect": "I enjoy designing end-to-end technical architectures.",
+#     "Systems Engineer": "I enjoy maintaining operating systems and infrastructure.",
+
+#     # Security
+#     "Cybersecurity Analyst": "I enjoy protecting systems and monitoring security threats.",
+#     "Security Engineer": "I enjoy building secure architectures and defense mechanisms.",
+#     "IT Support Engineer": "I enjoy troubleshooting technical issues and helping users.",
+
+#     # Quality Assurance
+#     "QA Engineer": "I enjoy testing software and ensuring product quality.",
+#     "Automation Test Engineer": "I enjoy building automated testing frameworks.",
+
+#     # Design
+#     "UI/UX Designer": "I enjoy designing intuitive and user-friendly interfaces.",
+#     "Product Designer": "I enjoy designing product flows and user experiences.",
+
+#     # Management
+#     "Product Manager": "I enjoy defining product vision and managing requirements.",
+#     "Technical Program Manager": "I enjoy coordinating large technical projects.",
+#     "Tech Lead": "I enjoy leading engineering teams and designing architecture."
+#     }
+#     #  Use TOP predicted career intent for semantic retrieval
+#     top_idx = int(np.argmax(probs))
+#     top_career = le.inverse_transform([top_idx])[0]
+
+#     query_text = prototypes.get(top_career, top_career)
+
+#     q_emb = sbert.encode([query_text], convert_to_numpy=True)
+
+
+#     q_emb_norm = q_emb / (np.linalg.norm(q_emb, axis=1, keepdims=True) + 1e-10)
+
+#     #  Retrieve similar careers/resources
+#     if use_faiss:
+#         _, I = faiss_index.search(q_emb_norm, 5)
+#     else:
+#         _, I = nn.kneighbors(q_emb, n_neighbors=5)
+
+#     suggestions = [
+#         {
+#             "id": int(careers.iloc[idx]["career_id"]),
+#             "title": careers.iloc[idx]["title"],
+#             "description": careers.iloc[idx]["description"],
+#             "category": careers.iloc[idx]["category"]
+#         }
+#         for idx in I[0]
+#     ]
+
+#     #  Final response
+#     return {
+#     "top_3_careers": top3_interests,
+#     "suggestions": suggestions,
+#     "debug_top_career": top_career}
 
 @app.post("/predict")
-def predict(data: RIASECInput):
+def predict(riasec: dict):
+    # 1️⃣ Build input
+    X = np.array([[riasec["R"], riasec["I"], riasec["A"],
+                   riasec["S"], riasec["E"], riasec["C"]]])
 
-    # 1️⃣ Build ML input (RIASEC → DataFrame)
-    X = pd.DataFrame([{
-        "R": data.R,
-        "I": data.I,
-        "A": data.A,
-        "S": data.S,
-        "E": data.E,
-        "C": data.C
-    }])
+    # 2️⃣ Predict probabilities
+    probs = model.predict_proba(X)[0]
+    interest_labels = label_encoder.classes_
 
-    # 2️⃣ Get probability scores from XGBoost
-    probs = xgb.predict_proba(X)[0]   # (num_classes,)
-
-    # 3️⃣ Pick TOP 3 careers
-    top3_idx = np.argsort(probs)[-3:][::-1]
-
-    top3 = [
-        {
-            "career": le.inverse_transform([idx])[0],
-            "confidence": round(float(probs[idx]), 3)
-        }
-        for idx in top3_idx
+    # 3️⃣ Pair interest with confidence and pick top 3
+    interest_scores = [
+        {"interest": interest_labels[i], "confidence": float(probs[i])}
+        for i in range(len(interest_labels))
     ]
+    interest_scores.sort(key=lambda x: x["confidence"], reverse=True)
+    top_3_interests = interest_scores[:3]
 
-    # 4️⃣ CS/IT-only intent prototypes (for SBERT)
-    prototypes = {
-    # Software Development
-    "Backend Developer": "I enjoy APIs, databases, authentication, and server-side programming.",
-    "Frontend Developer": "I enjoy building user interfaces, web animations, and interactive applications.",
-    "Full Stack Developer": "I enjoy working on both frontend interfaces and backend systems.",
-    "Mobile App Developer": "I enjoy creating Android and iOS mobile applications.",
-    "Game Developer": "I enjoy game engines, graphics, and interactive gameplay mechanics.",
+    # 4️⃣ Generate embeddings for the user's top interest descriptions
+    suggestions = []
+    for item in top_3_interests:
+        interest = item["interest"]
+        # Get all careers matching this interest
+        matched_careers = careers[careers["interest_label"] == interest]
 
-    # Data & AI
-    "Data Analyst": "I enjoy analyzing data, dashboards, reports, and extracting insights.",
-    "Data Scientist": "I enjoy statistics, machine learning, and data-driven problem solving.",
-    "Machine Learning Engineer": "I enjoy building, training, and deploying ML models.",
-    "AI Engineer": "I enjoy artificial intelligence, neural networks, and intelligent systems.",
-    "Big Data Engineer": "I enjoy large-scale data pipelines and distributed systems.",
+        if matched_careers.empty:
+            continue
 
-    # Cloud & DevOps
-    "DevOps Engineer": "I enjoy CI/CD pipelines, automation, and cloud infrastructure.",
-    "Cloud Engineer": "I enjoy designing scalable systems using cloud platforms like AWS.",
-    "Site Reliability Engineer": "I enjoy monitoring, reliability engineering, and system scalability.",
-    "Solutions Architect": "I enjoy designing end-to-end technical architectures.",
-    "Systems Engineer": "I enjoy maintaining operating systems and infrastructure.",
+        # SBERT embeddings for these careers
+        career_texts = matched_careers["title"].tolist()
+        career_embs = sbert.encode(career_texts, convert_to_numpy=True)
+        career_embs_norm = career_embs / (np.linalg.norm(career_embs, axis=1, keepdims=True) + 1e-10)
 
-    # Security
-    "Cybersecurity Analyst": "I enjoy protecting systems and monitoring security threats.",
-    "Security Engineer": "I enjoy building secure architectures and defense mechanisms.",
-    "IT Support Engineer": "I enjoy troubleshooting technical issues and helping users.",
+        # Create a "query" from the interest name (or top interest + description)
+        query_text = interest  # simple version, can be extended with description if available
+        query_emb = sbert.encode([query_text], convert_to_numpy=True)
+        query_emb_norm = query_emb / (np.linalg.norm(query_emb, axis=1, keepdims=True) + 1e-10)
 
-    # Quality Assurance
-    "QA Engineer": "I enjoy testing software and ensuring product quality.",
-    "Automation Test Engineer": "I enjoy building automated testing frameworks.",
+        # Compute cosine similarity
+        sims = np.dot(career_embs_norm, query_emb_norm.T).squeeze()
+        best_idx = int(np.argmax(sims))
 
-    # Design
-    "UI/UX Designer": "I enjoy designing intuitive and user-friendly interfaces.",
-    "Product Designer": "I enjoy designing product flows and user experiences.",
+        row = matched_careers.iloc[best_idx]
+        suggestions.append({
+            "id": int(row["career_id"]),
+            "title": row["title"],
+            "description": row["description"],
+            "category": row["category"]
+        })
 
-    # Management
-    "Product Manager": "I enjoy defining product vision and managing requirements.",
-    "Technical Program Manager": "I enjoy coordinating large technical projects.",
-    "Tech Lead": "I enjoy leading engineering teams and designing architecture."
-    }
-
-
-    # 5️⃣ Use TOP career intent for semantic retrieval
-    query_text = prototypes.get(top3[0]["career"], "")
-    q_emb = sbert.encode([query_text], convert_to_numpy=True)
-    q_emb_norm = q_emb / (np.linalg.norm(q_emb, axis=1, keepdims=True) + 1e-10)
-
-    # 6️⃣ Retrieve similar careers/resources
-    if use_faiss:
-        _, I = faiss_index.search(q_emb_norm, 5)
-    else:
-        _, I = nn.kneighbors(q_emb, n_neighbors=5)
-
-    suggestions = [
-        {
-            "id": int(careers.iloc[idx]["career_id"]),
-            "title": careers.iloc[idx]["title"],
-            "description": careers.iloc[idx]["description"],
-            "category": careers.iloc[idx]["category"]
-        }
-        for idx in I[0]
-    ]
-
-    # 7️⃣ Final response
     return {
-        "top_3_careers": top3,
+        "top_3_careers": top_3_interests,
         "suggestions": suggestions
     }
+
+
+
 
 
 
@@ -425,7 +590,95 @@ def get_roadmap(data: RoadmapRequest):
         "roadmap": roadmap,
         "source": "hf"
     }
+# =========================================================
+# SHARED HF CHAT COMPLETION HELPER
+# =========================================================
 
+def get_hf_response(prompt: str) -> str:
+    payload = {
+        "model": "deepseek-ai/DeepSeek-V3",
+        "messages": [
+            {"role": "user", "content": prompt}
+        ],
+        "max_tokens": 400
+    }
+
+    response = requests.post(
+        API_URL,
+        headers=HEADERS,
+        json=payload,
+        timeout=60
+    )
+    response.raise_for_status()
+
+    data = response.json()
+    return data["choices"][0]["message"]["content"].strip()
+
+# =========================
+# CHATBOT LOGIC
+# =========================
+
+def is_greeting(message: str) -> bool:
+    greetings = [
+        "hi", "hello", "hey", "hii", "hai",
+        "good morning", "good evening", "good afternoon"
+    ]
+    msg = message.lower().strip()
+    return any(greet in msg for greet in greetings)
+
+def get_dynamic_greeting() -> str:
+    responses = [
+        "Hi! I’m your career assistant. Ask me about any career or skills.",
+        "Hello! I can explain careers and share free learning resources.",
+        "Hey! Not sure about your career? Ask me anything related to careers."
+    ]
+    return random.choice(responses)
+
+def build_chatbot_prompt(user_message: str) -> str:
+    return f"""
+You are a beginner-friendly career guidance chatbot.
+
+RULES:
+- Simple human language
+- Career-related questions only
+- FREE resources only
+- No markdown, no emojis
+
+Format:
+Career Overview:
+<simple explanation>
+
+What You Will Do:
+<short explanation>
+
+Free Resources:
+- Resource name: https://link
+
+User question:
+{user_message}
+
+Answer:
+"""
+
+def chatbot_reply(user_message: str) -> str:
+    if is_greeting(user_message):
+        return get_dynamic_greeting()
+
+    prompt = build_chatbot_prompt(user_message)
+    response = get_hf_response(prompt)
+
+    return response + (
+        "\n\nNext Step:\n"
+        "To understand your interests better, take our short career quiz."
+    )
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.post("/chat")
+def chat_api(data: ChatRequest):
+    reply = chatbot_reply(data.message)
+    return {"reply": reply}
 
 # =========================================================
 # RUN SERVER
