@@ -77,7 +77,7 @@
     ]
   },
   "_meta": {
-    "last_updated": 1770122358
+    "last_updated": 1770196443
   },
   "Mechanical Engineering": {
     "career": "Mechanical Engineering",
@@ -1488,6 +1488,99 @@
           {
             "title": "Build a CI/CD pipeline for a sample project",
             "link": "https://www.youtube.com/results?search_query=Build+a+CI/CD+pipeline+for+a+sample+project+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "QA Engineer": {
+    "career": "QA Engineer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Software Testing",
+            "link": "https://www.guru99.com/software-testing-introduction-importance.html"
+          },
+          {
+            "title": "Manual Testing Basics",
+            "link": "https://www.softwaretestinghelp.com/manual-testing-tutorial/"
+          },
+          {
+            "title": "Bug Tracking Tools (Jira, Bugzilla)",
+            "link": "https://www.atlassian.com/software/jira"
+          },
+          {
+            "title": "Basic SQL for Testers",
+            "link": "https://www.w3schools.com/sql/"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Test Case Design Techniques",
+            "link": "https://www.tutorialspoint.com/software_testing_dictionary/test_case_design_techniques.htm"
+          },
+          {
+            "title": "Introduction to Automation Testing",
+            "link": "https://www.guru99.com/automation-testing.html"
+          },
+          {
+            "title": "Selenium WebDriver Basics",
+            "link": "https://www.selenium.dev/documentation/webdriver/"
+          },
+          {
+            "title": "API Testing Basics (Postman)",
+            "link": "https://learning.postman.com/docs/getting-started/introduction/"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced Selenium (Page Object Model, TestNG)",
+            "link": "https://www.toolsqa.com/selenium-webdriver/page-object-model/"
+          },
+          {
+            "title": "Performance Testing (JMeter)",
+            "link": "https://jmeter.apache.org/usermanual/index.html"
+          },
+          {
+            "title": "Continuous Integration (Jenkins)",
+            "link": "https://www.jenkins.io/doc/"
+          },
+          {
+            "title": "Mobile Testing (Appium)",
+            "link": "https://appium.io/docs/en/about-appium/intro/"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Create a test suite for a web application using Selenium",
+            "link": "https://www.youtube.com/results?search_query=Create+a+test+suite+for+a+web+application+using+Selenium+tutorial"
+          },
+          {
+            "title": "Automate API testing for a public REST API using Postman",
+            "link": "https://www.youtube.com/results?search_query=Automate+API+testing+for+a+public+REST+API+using+Postman+tutorial"
+          },
+          {
+            "title": "Set up a CI/CD pipeline for a test project using Jenkins",
+            "link": "https://www.youtube.com/results?search_query=Set+up+a+CI/CD+pipeline+for+a+test+project+using+Jenkins+tutorial"
+          },
+          {
+            "title": "Perform load testing on a website using JMeter",
+            "link": "https://www.youtube.com/results?search_query=Perform+load+testing+on+a+website+using+JMeter+tutorial"
           }
         ]
       }

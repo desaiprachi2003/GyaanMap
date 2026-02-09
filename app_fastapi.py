@@ -206,15 +206,15 @@ def predict(riasec: dict):
     Output: top 3 interests + best matching careers
     """
 
-    # 1️⃣ Build input for XGBoost
+    # Build input for XGBoost
     X_input = np.array([[riasec["R"], riasec["I"], riasec["A"],
                          riasec["S"], riasec["E"], riasec["C"]]])
 
-    # 2️⃣ Predict probabilities
+    # Predict probabilities
     probs = model.predict_proba(X_input)[0]
     interest_labels = label_encoder.classes_
 
-    # 3️⃣ Combine XGBoost probability + RIASEC trait scores
+    # Combine XGBoost probability + RIASEC trait scores
     interest_to_traits = {
     "Technical": ["R", "I"],
     "Data": ["R", "I"],
@@ -247,8 +247,8 @@ def predict(riasec: dict):
 
 
 
-    # 4️⃣ SBERT career matching (using prototypes)
-    # 4️⃣ SBERT career matching — ONLY for top interest
+    # SBERT career matching (using prototypes)
+    # SBERT career matching — ONLY for top interest
     matched_careers = careers[careers["interest_label"] == top_interest.lower()]
 
 
@@ -277,7 +277,7 @@ def predict(riasec: dict):
 
         sims = np.dot(career_embs, query_emb.T).squeeze()
 
-        top_indices = sims.argsort()[-3:][::-1]  # 🔥 TOP 3 careers
+        top_indices = sims.argsort()[-3:][::-1]  # TOP 3 careers
 
     for idx in top_indices:
         row = matched_careers.iloc[idx]
