@@ -77,7 +77,7 @@
     ]
   },
   "_meta": {
-    "last_updated": 1770196443
+    "last_updated": 1770649092
   },
   "Mechanical Engineering": {
     "career": "Mechanical Engineering",
@@ -1581,6 +1581,99 @@
           {
             "title": "Perform load testing on a website using JMeter",
             "link": "https://www.youtube.com/results?search_query=Perform+load+testing+on+a+website+using+JMeter+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "Data Analyst": {
+    "career": "Data Analyst",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Introduction to Data Analysis",
+            "link": "https://www.coursera.org/learn/data-analysis-excel"
+          },
+          {
+            "title": "Basic Statistics",
+            "link": "https://www.khanacademy.org/math/statistics-probability"
+          },
+          {
+            "title": "Excel for Beginners",
+            "link": "https://www.udemy.com/course/microsoft-excel-for-beginners/"
+          },
+          {
+            "title": "SQL Basics",
+            "link": "https://www.w3schools.com/sql/"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Intermediate SQL",
+            "link": "https://www.datacamp.com/courses/intermediate-sql"
+          },
+          {
+            "title": "Data Visualization with Tableau",
+            "link": "https://www.udemy.com/course/tableau10/"
+          },
+          {
+            "title": "Python for Data Analysis",
+            "link": "https://www.coursera.org/learn/python-data-analysis"
+          },
+          {
+            "title": "Exploratory Data Analysis (EDA)",
+            "link": "https://www.kaggle.com/learn/exploratory-data-analysis"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "Advanced SQL",
+            "link": "https://www.udemy.com/course/advanced-sql-mysql-for-analytics-business-intelligence/"
+          },
+          {
+            "title": "Machine Learning Basics",
+            "link": "https://www.coursera.org/learn/machine-learning"
+          },
+          {
+            "title": "Data Wrangling with Python",
+            "link": "https://www.datacamp.com/courses/data-wrangling-with-python"
+          },
+          {
+            "title": "Big Data Fundamentals",
+            "link": "https://www.edx.org/course/introduction-to-big-data"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Analyze a Dataset with Excel",
+            "link": "https://www.youtube.com/results?search_query=Analyze+a+Dataset+with+Excel+tutorial"
+          },
+          {
+            "title": "Build a Dashboard in Tableau",
+            "link": "https://www.youtube.com/results?search_query=Build+a+Dashboard+in+Tableau+tutorial"
+          },
+          {
+            "title": "Clean and Explore a Dataset with Python",
+            "link": "https://www.youtube.com/results?search_query=Clean+and+Explore+a+Dataset+with+Python+tutorial"
+          },
+          {
+            "title": "Predict Trends Using Machine Learning",
+            "link": "https://www.youtube.com/results?search_query=Predict+Trends+Using+Machine+Learning+tutorial"
           }
         ]
       }
