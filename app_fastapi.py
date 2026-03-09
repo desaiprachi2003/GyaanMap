@@ -847,10 +847,10 @@ def predict(riasec: dict):
     Output: top interest + best matching careers
     """
 
-    # ✅ Convert cumulative → average
+    #  Convert cumulative → average
     riasec_avg = normalize_riasec_to_avg(riasec)
 
-    # ✅ Build input for XGBoost using averages
+    # Build input for XGBoost using averages
     X_input = np.array([[riasec_avg["R"], riasec_avg["I"], riasec_avg["A"],
                          riasec_avg["S"], riasec_avg["E"], riasec_avg["C"]]])
 

@@ -232,7 +232,13 @@ const handleSubmit = async () => {
     });
 
     const result = await response.json();
-    navigate("/results", { state: { predictions: result } });
+    // navigate("/results", { state: { predictions: result } });
+    navigate("/results", {
+  state: {
+    predictions: result,
+    riasecScores: riasecScores
+  }
+});
 
   } catch (error) {
     console.error("Quiz submit error:", error);
