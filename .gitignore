@@ -16,5 +16,5 @@ build/
 
 # VS Code settings
 .vscode/
-prepare_data.py
+
 
