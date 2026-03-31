@@ -1,129 +1,121 @@
+
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import LabelEncoder
-from scipy.stats import chisquare, f_oneway, pearsonr
 
 # =========================
 # 1) LOAD DATASET
 # =========================
-df = pd.read_csv("csit_riasec_interest_dataset_balanced_5000.csv")
-
-print("\n==============================")
-print("DATASET BASIC INFO")
-print("==============================")
-print("Shape:", df.shape)
-print("Columns:", df.columns.tolist())
-print(df.head())
+df = pd.read_csv("csit_riasec_interest_dataset_final.csv")
 
 riasec_cols = ["R", "I", "A", "S", "E", "C"]
 
-# =========================
-# 2) CHECK BALANCE (CAREER)
-# =========================
-career_counts = df["career"].value_counts().sort_values(ascending=False)
-
 print("\n==============================")
-print("CAREER DISTRIBUTION")
+print("DATASET INFO")
 print("==============================")
-print(career_counts)
-
-plt.figure(figsize=(12, 6))
-career_counts.plot(kind="bar")
-plt.title("Career Distribution (Counts)")
-plt.xlabel("Career")
-plt.ylabel("Count")
-plt.xticks(rotation=90)
-plt.tight_layout()
-plt.show()
-
-# Chi-square goodness of fit (uniform expected)
-expected_career = np.ones_like(career_counts) * career_counts.mean()
-chi2_career, p_career = chisquare(career_counts, f_exp=expected_career)
-
-print("\nChi-square Career Balance Test:")
-print(f"Chi2 = {chi2_career:.4f}, p-value = {p_career:.6f}")
+print("Shape:", df.shape)
+print(df.head())
 
 # =========================
-# 3) CHECK BALANCE (INTEREST LABEL)
+# 2) COUNT OF RECORDS (INTEREST)
 # =========================
-interest_counts = df["interest_label"].value_counts().sort_values(ascending=False)
+interest_counts = df["interest_label"].value_counts()
 
-print("\n==============================")
-print("INTEREST DISTRIBUTION")
-print("==============================")
-print(interest_counts)
-
-plt.figure(figsize=(8, 5))
+plt.figure()
 interest_counts.plot(kind="bar")
-plt.title("Interest Distribution (Counts)")
+plt.title("Count of Records per Interest Label")
 plt.xlabel("Interest Label")
 plt.ylabel("Count")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
 
-expected_interest = np.ones_like(interest_counts) * interest_counts.mean()
-chi2_interest, p_interest = chisquare(interest_counts, f_exp=expected_interest)
-
-print("\nChi-square Interest Balance Test:")
-print(f"Chi2 = {chi2_interest:.4f}, p-value = {p_interest:.6f}")
-
 # =========================
-# 4) CORRELATION BETWEEN TRAITS
+# 3) MEAN TRAIT TABLE (BASE FOR EVERYTHING)
 # =========================
+mean_table = df.groupby("interest_label")[riasec_cols].mean()
+
 print("\n==============================")
-print("RIASEC CORRELATION MATRIX")
+print("MEAN RIASEC TABLE")
 print("==============================")
-corr_matrix = df[riasec_cols].corr()
-print(corr_matrix)
+print(mean_table)
 
-plt.figure(figsize=(6, 5))
-plt.imshow(corr_matrix, cmap="coolwarm", interpolation="nearest")
+# =========================
+# 4) HEATMAP (MAIN VISUAL)
+# =========================
+plt.figure()
+plt.imshow(mean_table, aspect='auto')
 plt.colorbar()
+
 plt.xticks(range(len(riasec_cols)), riasec_cols)
-plt.yticks(range(len(riasec_cols)), riasec_cols)
-plt.title("RIASEC Correlation Heatmap")
+plt.yticks(range(len(mean_table.index)), mean_table.index)
+
+# annotate values
+for i in range(len(mean_table.index)):
+    for j in range(len(riasec_cols)):
+        plt.text(j, i, f"{mean_table.iloc[i,j]:.1f}",
+                 ha='center', va='center')
+
+plt.title("Interest vs RIASEC Traits (Heatmap)")
+plt.xlabel("Traits")
+plt.ylabel("Interest Label")
 plt.tight_layout()
 plt.show()
 
 # =========================
-# 5) ANOVA (TRAITS DIFFER ACROSS CAREERS)
+# 5) BAR CHART → TRAIT COMPARISON
+# =========================
+mean_table.plot(kind="bar")
+
+plt.title("RIASEC Traits per Interest Label")
+plt.xlabel("Interest Label")
+plt.ylabel("Average Score")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# =========================
+# 6) DATA-DRIVEN MAPPING (KEY LOGIC)
 # =========================
 print("\n==============================")
-print("ANOVA TEST: TRAITS VS CAREERS")
+print("AUTO MAPPING (FROM HEATMAP)")
 print("==============================")
-print("If p-value < 0.05, trait differences across careers are statistically significant.\n")
 
-for trait in riasec_cols:
-    groups = [group[trait].values for _, group in df.groupby("career")]
-    f_stat, p_val = f_oneway(*groups)
-    print(f"{trait}: F = {f_stat:.4f}, p-value = {p_val:.10f}")
+auto_mapping = {}
+
+for interest in mean_table.index:
+    row = mean_table.loc[interest]
+
+    # pick top 2 traits automatically
+    top2 = row.sort_values(ascending=False).head(2).index.tolist()
+    auto_mapping[interest] = top2
+
+    print(f"{interest:15} → Top Traits: {top2}")
 
 # =========================
-# 6) TRAIT-CAREER CORRELATION (ENCODED)
+# 7) COMBINED SCORE (BASED ON REAL MAPPING)
 # =========================
 print("\n==============================")
-print("TRAIT vs CAREER (ENCODED) PEARSON CORRELATION")
+print("COMBINED TRAIT SCORES")
 print("==============================")
-print("This is just to show that traits influence career labels.\n")
 
-le = LabelEncoder()
-df["career_encoded"] = le.fit_transform(df["career"])
+# create combined score columns dynamically
+for interest, traits in auto_mapping.items():
+    df[interest + "_score"] = df[traits].mean(axis=1)
 
-for trait in riasec_cols:
-    r, p = pearsonr(df[trait], df["career_encoded"])
-    print(f"{trait}: r = {r:.4f}, p-value = {p:.10f}")
+score_cols = [col for col in df.columns if "_score" in col]
+
+combined_means = df.groupby("interest_label")[score_cols].mean()
 
 # =========================
-# FINAL CONCLUSION
+# 8) FINAL BAR CHART (LOGIC VISUAL)
 # =========================
-print("\n==============================")
-print("FINAL CONCLUSION YOU CAN SAY")
-print("==============================")
-print("""
-1) Dataset is balanced because career and interest distributions are uniform.
-2) Chi-square test supports the balance assumption (no career dominates).
-3) ANOVA shows RIASEC traits differ significantly across careers (p < 0.05).
-4) Correlation matrix shows traits are not pure random noise.
-""")
+combined_means.plot(kind="bar")
+
+# plt.title("Data-Driven Mapping (Matches Heatmap)")
+# plt.xlabel("Interest Label")
+# plt.ylabel("Combined Trait Score")
+# plt.xticks(rotation=45)
+# plt.tight_layout()
+# plt.show()
