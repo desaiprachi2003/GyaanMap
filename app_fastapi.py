@@ -1,4 +1,6 @@
 
+
+
 # from fastapi import FastAPI, HTTPException
 # from pydantic import BaseModel
 # from fastapi.middleware.cors import CORSMiddleware
@@ -44,8 +46,11 @@
 # # =========================================================
 
 # # XGBoost career classifier (CS/IT only)
-# model = joblib.load("xgb_model.joblib")
-# label_encoder = joblib.load("label_encoder.joblib")
+# # model = joblib.load("xgb_model.joblib")
+# # label_encoder = joblib.load("label_encoder.joblib")
+# model = joblib.load("xgb_model_final.joblib")
+# label_encoder = joblib.load("label_encoder_final.joblib")
+
 
 # # CS/IT careers metadata
 # careers = pd.read_csv("careers_csit.csv")
@@ -195,6 +200,26 @@
 #     return scores
 
 
+# def normalize_riasec_to_avg(riasec: dict):
+#     """
+#     Converts cumulative RIASEC scores into average scores.
+
+#     Example:
+#     If each trait has 4 questions (1 to 5 scale):
+#     cumulative R max = 20
+#     average R will be between 1 to 5
+#     """
+
+#     trait_question_count = 4  # because you have 4 questions per trait
+
+#     avg = {}
+#     for t in ["R", "I", "A", "S", "E", "C"]:
+#         # avg[t] = riasec[t] / trait_question_count
+#         avg[t] = (riasec.get(t, 0) or 0) / trait_question_count
+
+
+#     return avg
+
 
 
 
@@ -202,102 +227,97 @@
 # @app.post("/predict")
 # def predict(riasec: dict):
 #     """
-#     Input: RIASEC scores dict, e.g. {"R":5,"I":6,"A":20,"S":6,"E":5,"C":4}
-#     Output: top 3 interests + best matching careers
+#     Input: cumulative RIASEC dict, e.g. {"R":15,"I":18,"A":10,"S":12,"E":8,"C":16}
+#     Output: top interest + best matching careers
 #     """
 
-#     # Build input for XGBoost
-#     X_input = np.array([[riasec["R"], riasec["I"], riasec["A"],
-#                          riasec["S"], riasec["E"], riasec["C"]]])
+#     #  Convert cumulative → average
+#     riasec_avg = normalize_riasec_to_avg(riasec)
+
+#     # Build input for XGBoost using averages
+#     X_input = np.array([[riasec_avg["R"], riasec_avg["I"], riasec_avg["A"],
+#                          riasec_avg["S"], riasec_avg["E"], riasec_avg["C"]]])
 
 #     # Predict probabilities
 #     probs = model.predict_proba(X_input)[0]
 #     interest_labels = label_encoder.classes_
 
-#     # Combine XGBoost probability + RIASEC trait scores
+#     # Combine probability + trait logic
 #     interest_to_traits = {
-#     "Technical": ["R", "I"],
-#     "Data": ["R", "I"],
-#     "Design": ["A", "I"],
-#     "Management": ["E", "S"],
-#     "QualitySupport": ["S", "C"],
-#     "SecurityCloud": ["R", "S"]}
-
+#         "Technical": ["R", "I"],
+#         "Data": ["R", "I"],
+#         "Design": ["A", "I"],
+#         "Management": ["E", "S"],
+#         "QualitySupport": ["S", "C"],
+#         "SecurityCloud": ["R", "S"]
+#     }
 
 #     weighted_scores = []
 #     for i, interest in enumerate(interest_labels):
 #         traits = interest_to_traits.get(interest, [])
-#         # trait_score = sum([riasec[t] for t in traits])
-#         trait_score = sum(riasec.get(t, 0) or 0 for t in traits)
+#         trait_score = sum(riasec_avg.get(t, 0) or 0 for t in traits)
 
-#         # Make RIASEC traits dominate more
-#         combined_score = trait_score + (float(probs[i]) * 0.1)  # <-- 0.1 factor reduces XGBoost bias
+#         combined_score = trait_score + (float(probs[i]) * 0.1)
 
 #         weighted_scores.append({
-#         "interest": interest,
-#         "score": combined_score,
-#         "confidence": float(probs[i])
-#     })
+#             "interest": interest,
+#             "score": combined_score,
+#             "confidence": float(probs[i])
+#         })
 
-# # Sort by combined score
 #     weighted_scores.sort(key=lambda x: x["score"], reverse=True)
 #     top_3_interests = weighted_scores[:3]
-#     # 🔹 Take ONLY the top predicted interest
 #     top_interest = weighted_scores[0]["interest"]
 
-
-
-#     # SBERT career matching (using prototypes)
-#     # SBERT career matching — ONLY for top interest
 #     matched_careers = careers[careers["interest_label"] == top_interest.lower()]
-
 
 #     suggestions = []
 
 #     if not matched_careers.empty:
 #         career_texts = (
-#         matched_careers["title"] + ". " +
-#         matched_careers["description"] + ". Category: " +
-#         matched_careers["category"]).tolist()
+#             matched_careers["title"] + ". " +
+#             matched_careers["description"] + ". Category: " +
+#             matched_careers["category"]
+#         ).tolist()
 
 #         career_embs = sbert.encode(
-#         career_texts,
-#         convert_to_numpy=True,
-#         normalize_embeddings=True)
+#             career_texts,
+#             convert_to_numpy=True,
+#             normalize_embeddings=True
+#         )
 
 #         query_text = (
-#         f"{top_interest} career. "
-#         f"R: {riasec['R']}, I: {riasec['I']}, A: {riasec['A']}, "
-#         f"S: {riasec['S']}, E: {riasec['E']}, C: {riasec['C']}")
+#             f"{top_interest} career. "
+#             f"R: {riasec_avg['R']}, I: {riasec_avg['I']}, A: {riasec_avg['A']}, "
+#             f"S: {riasec_avg['S']}, E: {riasec_avg['E']}, C: {riasec_avg['C']}"
+#         )
 
 #         query_emb = sbert.encode(
-#         [query_text],
-#         convert_to_numpy=True,
-#         normalize_embeddings=True)
+#             [query_text],
+#             convert_to_numpy=True,
+#             normalize_embeddings=True
+#         )
 
 #         sims = np.dot(career_embs, query_emb.T).squeeze()
+#         top_indices = sims.argsort()[-3:][::-1]
 
-#         top_indices = sims.argsort()[-3:][::-1]  # TOP 3 careers
+#         for idx in top_indices:
+#             row = matched_careers.iloc[idx]
+#             suggestions.append({
+#                 "id": int(row["career_id"]),
+#                 "title": row["title"],
+#                 "description": row["description"],
+#                 "category": row["category"]
+#             })
 
-#     for idx in top_indices:
-#         row = matched_careers.iloc[idx]
-#         suggestions.append({
-#             "id": int(row["career_id"]),
-#             "title": row["title"],
-#             "description": row["description"],
-#             "category": row["category"]
-#         })
-
-
-#     print("📥 RECEIVED RIASEC:", riasec)
+#     print("📥 RECEIVED cumulative RIASEC:", riasec)
+#     print("📊 Converted to average:", riasec_avg)
 
 #     return {
-#     "top_interest": top_interest,
-#     "top_3_careers": top_3_interests,
-#     "suggestions": suggestions}
-
-
-
+#         "top_interest": top_interest,
+#         "top_3_careers": top_3_interests,
+#         "suggestions": suggestions
+#     }
 
 
 
@@ -608,13 +628,8 @@
 # if __name__ == "__main__":
 #     import uvicorn
 #     uvicorn.run("app_fastapi:app", host="127.0.0.1", port=8000, reload=True)
+#******************************************************************************************************************************************
 
-
-
-#***************************************************************************************************************************************************************
-#Updated Code
-
-#************************************************************************************************************
 
 
 from fastapi import FastAPI, HTTPException
@@ -843,22 +858,32 @@ def normalize_riasec_to_avg(riasec: dict):
 @app.post("/predict")
 def predict(riasec: dict):
     """
-    Input: cumulative RIASEC dict, e.g. {"R":15,"I":18,"A":10,"S":12,"E":8,"C":16}
-    Output: top interest + best matching careers
+    Input: cumulative RIASEC dict
+    Output: prediction + explainable AI (XAI)
     """
 
-    #  Convert cumulative → average
+    # =========================
+    # STEP 1: Normalize scores
+    # =========================
     riasec_avg = normalize_riasec_to_avg(riasec)
 
-    # Build input for XGBoost using averages
-    X_input = np.array([[riasec_avg["R"], riasec_avg["I"], riasec_avg["A"],
-                         riasec_avg["S"], riasec_avg["E"], riasec_avg["C"]]])
+    # =========================
+    # STEP 2: Prepare input
+    # =========================
+    X_input = np.array([[
+        riasec_avg["R"], riasec_avg["I"], riasec_avg["A"],
+        riasec_avg["S"], riasec_avg["E"], riasec_avg["C"]
+    ]])
 
-    # Predict probabilities
+    # =========================
+    # STEP 3: Model prediction
+    # =========================
     probs = model.predict_proba(X_input)[0]
     interest_labels = label_encoder.classes_
 
-    # Combine probability + trait logic
+    # =========================
+    # STEP 4: Trait-based logic
+    # =========================
     interest_to_traits = {
         "Technical": ["R", "I"],
         "Data": ["R", "I"],
@@ -869,9 +894,10 @@ def predict(riasec: dict):
     }
 
     weighted_scores = []
+
     for i, interest in enumerate(interest_labels):
         traits = interest_to_traits.get(interest, [])
-        trait_score = sum(riasec_avg.get(t, 0) or 0 for t in traits)
+        trait_score = sum(riasec_avg.get(t, 0) for t in traits)
 
         combined_score = trait_score + (float(probs[i]) * 0.1)
 
@@ -882,14 +908,35 @@ def predict(riasec: dict):
         })
 
     weighted_scores.sort(key=lambda x: x["score"], reverse=True)
+
     top_3_interests = weighted_scores[:3]
     top_interest = weighted_scores[0]["interest"]
 
+    # =========================
+    # STEP 5: XAI (TRAIT EXPLANATION)
+    # =========================
+    sorted_traits = sorted(riasec_avg.items(), key=lambda x: x[1], reverse=True)
+
+    top_traits = sorted_traits[:2]
+    low_traits = sorted_traits[-2:]
+
+    interest_explanation = {
+        "predicted_interest": top_interest,
+        "confidence": round(weighted_scores[0]["confidence"] * 100, 2),
+        "top_traits": top_traits,
+        "low_traits": low_traits,
+        "reason": f"High scores in {top_traits[0][0]} and {top_traits[1][0]} traits influenced this prediction."
+    }
+
+    # =========================
+    # STEP 6: Career filtering
+    # =========================
     matched_careers = careers[careers["interest_label"] == top_interest.lower()]
 
     suggestions = []
 
     if not matched_careers.empty:
+
         career_texts = (
             matched_careers["title"] + ". " +
             matched_careers["description"] + ". Category: " +
@@ -919,20 +966,25 @@ def predict(riasec: dict):
 
         for idx in top_indices:
             row = matched_careers.iloc[idx]
+            similarity_score = float(sims[idx])
+
             suggestions.append({
                 "id": int(row["career_id"]),
                 "title": row["title"],
                 "description": row["description"],
-                "category": row["category"]
+                "category": row["category"],
+                "match_score": round(similarity_score * 100, 2),
+                "explanation": f"This career matches your {top_interest} interest and aligns with your personality traits."
             })
 
-    print("📥 RECEIVED cumulative RIASEC:", riasec)
-    print("📊 Converted to average:", riasec_avg)
-
+    # =========================
+    # FINAL RESPONSE
+    # =========================
     return {
         "top_interest": top_interest,
-        "top_3_careers": top_3_interests,
-        "suggestions": suggestions
+        "top_3_interests": top_3_interests,
+        "suggestions": suggestions,
+        "explanation": interest_explanation
     }
 
 

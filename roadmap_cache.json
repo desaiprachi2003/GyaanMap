@@ -1,84 +1,4 @@
 {
-  "Product Designer": {
-    "career": "Product Designer",
-    "roadmap": [
-      {
-        "level": "Foundation",
-        "duration": "3–6 months",
-        "topics": [
-          {
-            "title": "Introduction to Design Principles",
-            "link": "https://www.youtube.com/results?search_query=Introduction+to+Design+Principles+tutorial"
-          },
-          {
-            "title": "Basics of UX/UI Design",
-            "link": "https://www.youtube.com/results?search_query=Basics+of+UX/UI+Design+tutorial"
-          },
-          {
-            "title": "Figma for Beginners",
-            "link": "https://www.youtube.com/results?search_query=Figma+for+Beginners+tutorial"
-          }
-        ]
-      },
-      {
-        "level": "Intermediate",
-        "duration": "6–12 months",
-        "topics": [
-          {
-            "title": "User Research Methods",
-            "link": "https://www.youtube.com/results?search_query=User+Research+Methods+tutorial"
-          },
-          {
-            "title": "Wireframing and Prototyping",
-            "link": "https://www.youtube.com/results?search_query=Wireframing+and+Prototyping+tutorial"
-          },
-          {
-            "title": "Design Systems",
-            "link": "https://www.youtube.com/results?search_query=Design+Systems+tutorial"
-          }
-        ]
-      },
-      {
-        "level": "Advanced",
-        "duration": "12–18 months",
-        "topics": [
-          {
-            "title": "Advanced Interaction Design",
-            "link": "https://www.youtube.com/results?search_query=Advanced+Interaction+Design+tutorial"
-          },
-          {
-            "title": "Data-Driven Design",
-            "link": "https://www.youtube.com/results?search_query=Data-Driven+Design+tutorial"
-          },
-          {
-            "title": "Accessibility in Design",
-            "link": "https://www.youtube.com/results?search_query=Accessibility+in+Design+tutorial"
-          }
-        ]
-      },
-      {
-        "level": "Projects",
-        "duration": "18+ months",
-        "topics": [
-          {
-            "title": "Redesign a popular app’s homepage",
-            "link": "https://www.youtube.com/results?search_query=Redesign+a+popular+app’s+homepage+tutorial"
-          },
-          {
-            "title": "Create a mobile app from scratch",
-            "link": "https://www.youtube.com/results?search_query=Create+a+mobile+app+from+scratch+tutorial"
-          },
-          {
-            "title": "Build a design system for a fictional brand",
-            "link": "https://www.youtube.com/results?search_query=Build+a+design+system+for+a+fictional+brand+tutorial"
-          }
-        ]
-      }
-    ]
-  },
-  "_meta": {
-    "last_updated": 1773073027
-  },
   "Technical Program Manager": {
     "career": "Technical Program Manager",
     "roadmap": [
@@ -87,20 +7,24 @@
         "duration": "3–6 months",
         "topics": [
           {
-            "title": "Introduction to Program Management",
-            "link": "https://www.coursera.org/learn/project-management"
+            "title": "Understanding the Role",
+            "link": "https://www.atlassian.com/blog/teamwork/what-is-a-technical-program-manager"
           },
           {
-            "title": "Basics of Software Development",
-            "link": "https://www.edx.org/course/introduction-computer-science-harvardx-cs50x"
+            "title": "Basic Project Management",
+            "link": "https://www.coursera.org/learn/uva-darden-project-management"
           },
           {
-            "title": "Agile and Scrum Methodologies",
-            "link": "https://www.scrum.org/resources/what-is-scrum"
+            "title": "Introduction to Agile & Scrum",
+            "link": "https://www.atlassian.com/agile"
           },
           {
-            "title": "Communication and Stakeholder Management",
-            "link": "https://www.coursera.org/learn/communication-skills"
+            "title": "Foundational Technical Concepts",
+            "link": "https://www.codecademy.com/learn/learn-how-to-code"
+          },
+          {
+            "title": "Effective Communication",
+            "link": "https://www.coursera.org/learn/communication-in-the-workplace"
           }
         ]
       },
@@ -109,20 +33,24 @@
         "duration": "6–12 months",
         "topics": [
           {
-            "title": "Technical Fundamentals (Cloud, APIs, Databases)",
-            "link": "https://aws.amazon.com/getting-started/"
+            "title": "Advanced Agile & Program Management",
+            "link": "https://www.pmi.org/disciplines/agile"
           },
           {
-            "title": "Risk Management and Mitigation",
-            "link": "https://www.coursera.org/learn/risk-management"
+            "title": "Systems Thinking & Architecture",
+            "link": "https://www.coursera.org/learn/systems-thinking"
           },
           {
-            "title": "Roadmapping and Prioritization",
-            "link": "https://www.productplan.com/learn/product-roadmap/"
+            "title": "Technical Fundamentals for TPMs",
+            "link": "https://cloud.google.com/learn/what-is-cloud-computing"
           },
           {
-            "title": "Cross-Functional Team Leadership",
-            "link": "https://www.linkedin.com/learning/leading-cross-functional-teams"
+            "title": "Stakeholder Management & Leadership",
+            "link": "https://www.coursera.org/learn/leadership-influence"
+          },
+          {
+            "title": "Risk Management & Mitigation",
+            "link": "https://www.pmi.org/learning/library/risk-management-7092"
           }
         ]
       },
@@ -131,20 +59,24 @@
         "duration": "12–18 months",
         "topics": [
           {
-            "title": "Advanced Agile (SAFe, LeSS)",
-            "link": "https://www.scaledagileframework.com/"
+            "title": "Strategic Planning & Roadmapping",
+            "link": "https://www.productplan.com/learn/product-roadmap/"
           },
           {
-            "title": "Systems Thinking and Architecture",
-            "link": "https://www.coursera.org/learn/systems-thinking"
+            "title": "Advanced Technical Concepts (DevOps, Security, Cloud)",
+            "link": "https://aws.amazon.com/what-is/devops/"
           },
           {
-            "title": "Metrics and Performance Tracking",
-            "link": "https://www.oreilly.com/library/view/accelerate/9781457191435/"
+            "title": "Budgeting & Financial Acumen",
+            "link": "https://www.coursera.org/learn/finance-managers"
           },
           {
-            "title": "Negotiation and Conflict Resolution",
-            "link": "https://www.coursera.org/learn/negotiation-skills"
+            "title": "Change Management",
+            "link": "https://www.prosci.com/resources/articles/change-management-methodology"
+          },
+          {
+            "title": "Organizational Dynamics",
+            "link": "https://hbr.org/topic/subject/organizational-culture"
           }
         ]
       },
@@ -153,20 +85,205 @@
         "duration": "18+ months",
         "topics": [
           {
-            "title": "Lead a small cross-functional project",
-            "link": "https://www.youtube.com/results?search_query=Lead+a+small+cross-functional+project+tutorial"
+            "title": "Personal Project",
+            "link": "https://www.youtube.com/results?search_query=Personal+Project+tutorial"
           },
           {
-            "title": "Create a technical roadmap for a hypothetical product",
-            "link": "https://www.youtube.com/results?search_query=Create+a+technical+roadmap+for+a+hypothetical+product+tutorial"
+            "title": "Open Source Contribution",
+            "link": "https://www.youtube.com/results?search_query=Open+Source+Contribution+tutorial"
           },
           {
-            "title": "Implement Agile practices in a real-world scenario",
-            "link": "https://www.youtube.com/results?search_query=Implement+Agile+practices+in+a+real-world+scenario+tutorial"
+            "title": "Process Improvement Case Study",
+            "link": "https://www.youtube.com/results?search_query=Process+Improvement+Case+Study+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "_meta": {
+    "last_updated": 1775042576
+  },
+  "IT Support Engineer": {
+    "career": "IT Support Engineer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Computer Hardware and Software Basics",
+            "link": "https://www.coursera.org/professional-certificates/google-it-support"
           },
           {
-            "title": "Analyze and improve a process using metrics",
-            "link": "https://www.youtube.com/results?search_query=Analyze+and+improve+a+process+using+metrics+tutorial"
+            "title": "Operating Systems: Windows and Linux Fundamentals",
+            "link": "https://www.coursera.org/learn/os-power-user"
+          },
+          {
+            "title": "Basic Networking Concepts",
+            "link": "https://www.coursera.org/learn/computer-networking"
+          },
+          {
+            "title": "Command Line Interface Basics",
+            "link": "https://www.codecademy.com/learn/learn-the-command-line"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "System Administration and IT Infrastructure Services",
+            "link": "https://www.coursera.org/learn/system-administration-it-infrastructure-services"
+          },
+          {
+            "title": "Network Protocols and Security",
+            "link": "https://www.coursera.org/learn/computer-networking"
+          },
+          {
+            "title": "Cloud Computing Fundamentals (AWS, Azure)",
+            "link": "https://aws.amazon.com/getting-started/cloud-essentials/"
+          },
+          {
+            "title": "IT Security and Cybersecurity Principles",
+            "link": "https://www.coursera.org/learn/it-security"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "IT Automation with Python",
+            "link": "https://www.coursera.org/professional-certificates/google-it-automation"
+          },
+          {
+            "title": "Active Directory and Identity Management",
+            "link": "https://learn.microsoft.com/en-us/training/paths/active-directory-domain-services/"
+          },
+          {
+            "title": "Virtualization and Containerization (VMware, Docker)",
+            "link": "https://www.coursera.org/learn/virtualization"
+          },
+          {
+            "title": "IT Service Management and ITIL Framework",
+            "link": "https://www.axelos.com/best-practice-solutions/itil"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Build and Troubleshoot a Desktop Computer",
+            "link": "https://www.youtube.com/results?search_query=Build+and+Troubleshoot+a+Desktop+Computer+tutorial"
+          },
+          {
+            "title": "Set Up a Home Network with Router and Wireless Security",
+            "link": "https://www.youtube.com/results?search_query=Set+Up+a+Home+Network+with+Router+and+Wireless+Security+tutorial"
+          },
+          {
+            "title": "Create Scripts to Automate Common System Admin Tasks",
+            "link": "https://www.youtube.com/results?search_query=Create+Scripts+to+Automate+Common+System+Admin+Tasks+tutorial"
+          },
+          {
+            "title": "Configure a Virtual Machine Lab Environment",
+            "link": "https://www.youtube.com/results?search_query=Configure+a+Virtual+Machine+Lab+Environment+tutorial"
+          }
+        ]
+      }
+    ]
+  },
+  "UI/UX Designer": {
+    "career": "UI/UX Designer",
+    "roadmap": [
+      {
+        "level": "Foundation",
+        "duration": "3–6 months",
+        "topics": [
+          {
+            "title": "Understanding UI/UX Design",
+            "link": "https://www.interaction-design.org/literature/article/a-beginner-s-guide-to-ui-design"
+          },
+          {
+            "title": "Design Tools: Figma",
+            "link": "https://www.figma.com/resources/learn-design/"
+          },
+          {
+            "title": "Design Principles & Heuristics",
+            "link": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+          },
+          {
+            "title": "Introduction to User Research",
+            "link": "https://www.usertesting.com/blog/user-research-beginners-guide"
+          }
+        ]
+      },
+      {
+        "level": "Intermediate",
+        "duration": "6–12 months",
+        "topics": [
+          {
+            "title": "Wireframing & Prototyping",
+            "link": "https://careerfoundry.com/en/blog/ux-design/how-to-create-your-first-wireframe/"
+          },
+          {
+            "title": "Visual Design: Color & Typography",
+            "link": "https://www.interaction-design.org/literature/article/how-to-use-color-theory-and-typography-in-ui-design"
+          },
+          {
+            "title": "Interaction Design",
+            "link": "https://www.uxpin.com/studio/blog/complete-beginner-guide-interaction-design/"
+          },
+          {
+            "title": "Usability Testing Methods",
+            "link": "https://www.nngroup.com/articles/usability-testing-101/"
+          }
+        ]
+      },
+      {
+        "level": "Advanced",
+        "duration": "12–18 months",
+        "topics": [
+          {
+            "title": "UX Strategy & Information Architecture",
+            "link": "https://www.uxmatters.com/mt/archives/2012/05/so-you-want-to-be-a-ux-strategist.php"
+          },
+          {
+            "title": "Designing for Accessibility",
+            "link": "https://www.w3.org/WAI/fundamentals/accessibility-intro/"
+          },
+          {
+            "title": "UI Animation & Micro-interactions",
+            "link": "https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9"
+          },
+          {
+            "title": "Design Systems",
+            "link": "https://www.invisionapp.com/inside-design/guide-to-design-systems/"
+          }
+        ]
+      },
+      {
+        "level": "Projects",
+        "duration": "18+ months",
+        "topics": [
+          {
+            "title": "Redesign an existing website or app",
+            "link": "https://www.youtube.com/results?search_query=Redesign+an+existing+website+or+app+tutorial"
+          },
+          {
+            "title": "Design a complete flow for a new product",
+            "link": "https://www.youtube.com/results?search_query=Design+a+complete+flow+for+a+new+product+tutorial"
+          },
+          {
+            "title": "Create a portfolio case study",
+            "link": "https://www.youtube.com/results?search_query=Create+a+portfolio+case+study+tutorial"
+          },
+          {
+            "title": "Contribute to an open-source design system",
+            "link": "https://www.youtube.com/results?search_query=Contribute+to+an+open-source+design+system+tutorial"
           }
         ]
       }
