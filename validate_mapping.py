@@ -9,7 +9,7 @@ riasec_cols = ["R", "I", "A", "S", "E", "C"]
 
 interest_to_traits = {
     "Technical": ["R", "I"],
-    "Data": ["R", "I"],
+    "Data": ["C", "I"],
     "Design": ["A", "I"],
     "Management": ["E", "S"],
     "QualitySupport": ["S", "C"],
