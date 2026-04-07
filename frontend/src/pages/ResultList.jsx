@@ -1,3 +1,6 @@
+
+
+
 // import React from "react";
 // import { useLocation, useNavigate } from "react-router-dom";
 // import { Doughnut } from "react-chartjs-2";
@@ -5,15 +8,11 @@
 
 // import {
 //   Chart as ChartJS,
-//   RadialLinearScale,
-//   PointElement,
-//   LineElement,
-//   Filler,
 //   Tooltip,
 //   Legend
 // } from "chart.js";
 
-// import { ArcElement} from "chart.js";
+// import { ArcElement } from "chart.js";
 
 // ChartJS.register(
 //   ArcElement,
@@ -26,90 +25,64 @@
 //   const location = useLocation();
 //   const navigate = useNavigate();
 
-//   // CORRECT STATE ACCESS
 //   const predictions = location.state?.predictions;
 //   const riasecScores = location.state?.riasecScores;
-//    const donutData = {
-//   labels: [
-//     "Realistic",
-//     "Investigative",
-//     "Artistic",
-//     "Social",
-//     "Enterprising",
-//     "Conventional"
-//   ],
-//   datasets: [
-//     {
-//       data: [
-//         riasecScores?.R || 0,
-//         riasecScores?.I || 0,
-//         riasecScores?.A || 0,
-//         riasecScores?.S || 0,
-//         riasecScores?.E || 0,
-//         riasecScores?.C || 0
-//       ],
-//       backgroundColor: [
-//   "#6366F1", // indigo
-//   "#F59E0B", // amber
-//   "#10B981", // emerald
-//   "#EF4444", // red
-//   "#8B5CF6", // violet
-//   "#64748B"  // slate
-// ],
-//       borderWidth: 0
-//     }
-//   ]
-// };
 
-// const donutOptions = {
-//   cutout: "60%",
-//   plugins: {
-//     legend: {
-//       position: "right"
-//     },
-//     datalabels: {
-//       color: "white",
-//       font: {
-//         weight: "bold",
-//         size: 14
+//   const explanation = predictions?.explanation;
+
+//   const donutData = {
+//     labels: [
+//       "Realistic",
+//       "Investigative",
+//       "Artistic",
+//       "Social",
+//       "Enterprising",
+//       "Conventional"
+//     ],
+//     datasets: [
+//       {
+//         data: [
+//           riasecScores?.R || 0,
+//           riasecScores?.I || 0,
+//           riasecScores?.A || 0,
+//           riasecScores?.S || 0,
+//           riasecScores?.E || 0,
+//           riasecScores?.C || 0
+//         ],
+//         backgroundColor: [
+//           "#6366F1",
+//           "#F59E0B",
+//           "#10B981",
+//           "#EF4444",
+//           "#8B5CF6",
+//           "#64748B"
+//         ],
+//         borderWidth: 0
+//       }
+//     ]
+//   };
+
+//   const donutOptions = {
+//     cutout: "60%",
+//     plugins: {
+//       legend: {
+//         position: "right"
 //       },
-//       formatter: (value, context) => {
-//         const data = context.chart.data.datasets[0].data;
-//         const total = data.reduce((a, b) => a + b, 0);
-//         const percentage = ((value / total) * 100).toFixed(1) + "%";
-//         return percentage;
+//       datalabels: {
+//         color: "white",
+//         font: {
+//           weight: "bold",
+//           size: 14
+//         },
+//         formatter: (value, context) => {
+//           const data = context.chart.data.datasets[0].data;
+//           const total = data.reduce((a, b) => a + b, 0);
+//           const percentage = ((value / total) * 100).toFixed(1) + "%";
+//           return percentage;
+//         }
 //       }
 //     }
-//   }
-// };
-
-// const getAssociation = () => {
-
-//   const pairs = [
-//     {t:["R","I"], label:"R + I → Technical orientation"},
-//     {t:["I","C"], label:"I + C → Data-oriented thinking"},
-//     {t:["A","I"], label:"A + I → Creative technology interest"},
-//     {t:["E","S"], label:"E + S → Leadership & management"},
-//     {t:["S","C"], label:"S + C → Support & QA roles"},
-//     {t:["R","S"], label:"R + S → Security & cloud systems"}
-//   ];
-
-//   let best = "";
-//   let score = 0;
-
-//   pairs.forEach(p => {
-
-//     const s = (riasecScores[p.t[0]] || 0) + (riasecScores[p.t[1]] || 0);
-
-//     if(s > score){
-//       score = s;
-//       best = p.label;
-//     }
-
-//   });
-
-//   return best;
-// };
+//   };
 
 //   if (!predictions || !Array.isArray(predictions.suggestions)) {
 //     return (
@@ -122,69 +95,80 @@
 //   }
 
 //   return (
-//     // <div className="max-w-4xl mx-auto px-6 py-10">
-//     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-6 py-10">
+//     <div className="min-h-screen flex flex-col items-center bg-slate-50 px-6 py-10">
 
-//       {/* ===== TOP 3 PREDICTIONS ===== */}
-//       <div className="mb-8">
-//         {/* ===== RIASEC VISUALIZATION ===== */}
+//       {/* ===== RIASEC ===== */}
+//       <div className="mb-10 flex flex-col items-center">
+//         <h1 className="text-3xl font-bold text-slate-800 mb-6">
+//           Your RIASEC Profile
+//         </h1>
 
-// <div className="mb-10 flex flex-col items-center">
-
-//  <h1 className="text-3xl font-bold text-slate-800 tracking-wide mb-6">
-//   Your RIASEC Profile
-// </h1>
-
-//   {/* <div className="w-[420px]">
-//     <Doughnut data={donutData} options={donutOptions} />
-//   </div> */}
-//   <div className="w-[420px] flex justify-center items-center">
-//   <Doughnut data={donutData} options={donutOptions} />
-// </div>
-
-//   {/* <div className="mt-4 bg-gray-100 px-4 py-2 rounded-lg text-gray-700">
-//     Strong Association: {getAssociation()}
-//   </div> */}
-//   <div className="mt-6 px-6 py-3 rounded-xl bg-indigo-100 text-indigo-800 font-semibold shadow-sm">
-//   Strong Association: {getAssociation()}
-// </div>
-
-// </div>
-//         {/* <h1 className="text-3xl font-bold mb-2">Career Suggestions</h1>
-//         <p className="text-gray-500 mb-4">
-//           Based on your responses, here are your best CS/IT career matches
-//         </p> */}
-        
-//         <div className="text-center mt-12">
-//   <h2 className="text-3xl font-bold text-slate-800">
-//     Career Suggestions
-//   </h2>
-
-//   <p className="text-slate-500 mt-2">
-//     Based on your responses, here are your best CS/IT career matches
-//   </p>
-// </div>
-
-//         {/* <div className="flex flex-wrap gap-3">
-//           {predictions.top_3_careers.map((c, index) => (
-//             <div
-//               key={c.interest}
-//               className={`px-4 py-2 rounded-full text-sm font-semibold
-//                 ${
-//                   index === 0
-//                     ? "bg-green-100 text-green-700"
-//                     : "bg-purple-100 text-purple-700"
-//                 }`}
-//             >
-//               {index + 1}. {c.interest} — {Math.round(c.confidence * 100)}%
-//             </div>
-//           ))}
-//         </div> */}
+//         <div className="w-[420px] flex justify-center">
+//           <Doughnut data={donutData} options={donutOptions} />
+//         </div>
 //       </div>
 
-//       {/* ===== SUGGESTION CARDS ===== */}
-//       {/* <div className="grid sm:grid-cols-2 gap-6"> */}
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-5xl">
+//       {/* ===== XAI EXPLANATION ===== */}
+//       <div className="bg-white p-6 rounded-2xl shadow-md max-w-3xl mb-12 w-full mx-auto text-center">
+
+//         <h2 className="text-xl font-semibold text-indigo-700 mb-3">
+//           Why this recommendation?
+//         </h2>
+
+//         <p className="text-gray-700 mb-2">
+//           {explanation?.reason}
+//         </p>
+
+//         <p className="text-sm text-gray-500 mb-4">
+//           Confidence: {explanation?.confidence}%
+//         </p>
+
+//         {/* TOP TRAITS */}
+//         <h3 className="font-semibold text-gray-800 mb-2">
+//           Your Strengths:
+//         </h3>
+
+//         <div className="flex gap-3 flex-wrap mb-4 justify-center">
+//           {explanation?.top_traits?.map((t, i) => (
+//             <span
+//               key={i}
+//               className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm"
+//             >
+//               {t[0]} ({t[1].toFixed(1)})
+//             </span>
+//           ))}
+//         </div>
+
+//         {/* LOW TRAITS */}
+//         <h3 className="font-semibold text-gray-800 mb-2">
+//           Areas to Improve:
+//         </h3>
+
+//         <div className="flex gap-3 flex-wrap justify-center">
+//           {explanation?.low_traits?.map((t, i) => (
+//             <span
+//               key={i}
+//               className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm"
+//             >
+//               {t[0]} ({t[1].toFixed(1)})
+//             </span>
+//           ))}
+//         </div>
+
+//       </div>
+
+//       {/* ===== CAREER SUGGESTIONS ===== */}
+//       <div className="text-center mb-6">
+//         <h2 className="text-3xl font-bold text-slate-800">
+//           Career Suggestions
+//         </h2>
+//         <p className="text-slate-500 mt-2">
+//           Based on your responses, here are your best CS/IT career matches
+//         </p>
+//       </div>
+
+//       {/* ===== CARDS ===== */}
+//       {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
 //         {predictions.suggestions.slice(0, 3).map((career) => (
 
 //           <button
@@ -207,13 +191,46 @@
 //             <p className="text-gray-600 mt-2">
 //               {career.description}
 //             </p>
+
+//             <p className="mt-2 text-sm text-indigo-600 font-semibold">
+//               Match: {career.match_score}%
+//             </p>
+
+//             <p className="text-xs text-gray-500 mt-1">
+//               {career.explanation}
+//             </p>
+
 //           </button>
 //         ))}
-//       </div>
+//       </div> */}
+//       <div className="mt-2 text-xs text-gray-600">
+
+//   <p className="font-semibold text-indigo-600">
+//     Why this career?
+//   </p>
+
+//   <p>
+//     {career.xai?.reason}
+//   </p>
+
+//   <p className="mt-1 text-gray-500">
+//     Interest: {career.xai?.interest_used}
+//   </p>
+
+//   <p className="text-gray-500">
+//     Model Confidence: {career.xai?.model_confidence}%
+//   </p>
+
+//   <p className="text-gray-500">
+//     Similarity Score: {career.xai?.similarity_score}%
+//   </p>
+
+// </div>
+
 //     </div>
 //   );
 // }
-//********************************************************************************************************* */
+//***************************************************************************************** */
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Doughnut } from "react-chartjs-2";
@@ -221,15 +238,11 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 
 import {
   Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
   Tooltip,
   Legend
 } from "chart.js";
 
-import { ArcElement} from "chart.js";
+import { ArcElement } from "chart.js";
 
 ChartJS.register(
   ArcElement,
@@ -242,90 +255,63 @@ export default function ResultList() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // CORRECT STATE ACCESS
   const predictions = location.state?.predictions;
   const riasecScores = location.state?.riasecScores;
-   const donutData = {
-  labels: [
-    "Realistic",
-    "Investigative",
-    "Artistic",
-    "Social",
-    "Enterprising",
-    "Conventional"
-  ],
-  datasets: [
-    {
-      data: [
-        riasecScores?.R || 0,
-        riasecScores?.I || 0,
-        riasecScores?.A || 0,
-        riasecScores?.S || 0,
-        riasecScores?.E || 0,
-        riasecScores?.C || 0
-      ],
-      backgroundColor: [
-  "#6366F1", // indigo
-  "#F59E0B", // amber
-  "#10B981", // emerald
-  "#EF4444", // red
-  "#8B5CF6", // violet
-  "#64748B"  // slate
-],
-      borderWidth: 0
-    }
-  ]
-};
 
-const donutOptions = {
-  cutout: "60%",
-  plugins: {
-    legend: {
-      position: "right"
-    },
-    datalabels: {
-      color: "white",
-      font: {
-        weight: "bold",
-        size: 14
+  const explanation = predictions?.explanation;
+
+  const donutData = {
+    labels: [
+      "Realistic",
+      "Investigative",
+      "Artistic",
+      "Social",
+      "Enterprising",
+      "Conventional"
+    ],
+    datasets: [
+      {
+        data: [
+          riasecScores?.R || 0,
+          riasecScores?.I || 0,
+          riasecScores?.A || 0,
+          riasecScores?.S || 0,
+          riasecScores?.E || 0,
+          riasecScores?.C || 0
+        ],
+        backgroundColor: [
+          "#6366F1",
+          "#F59E0B",
+          "#10B981",
+          "#EF4444",
+          "#8B5CF6",
+          "#64748B"
+        ],
+        borderWidth: 0
+      }
+    ]
+  };
+
+  const donutOptions = {
+    cutout: "60%",
+    plugins: {
+      legend: {
+        position: "right"
       },
-      formatter: (value, context) => {
-        const data = context.chart.data.datasets[0].data;
-        const total = data.reduce((a, b) => a + b, 0);
-        const percentage = ((value / total) * 100).toFixed(1) + "%";
-        return percentage;
+      datalabels: {
+        color: "white",
+        font: {
+          weight: "bold",
+          size: 14
+        },
+        formatter: (value, context) => {
+          const data = context.chart.data.datasets[0].data;
+          const total = data.reduce((a, b) => a + b, 0);
+          return ((value / total) * 100).toFixed(1) + "%";
+        }
       }
     }
-  }
-};
-
-// const getAssociation = () => {
-
-//   const pairs = [
-//     {t:["R","I"], label:"R + I → Technical orientation"},
-//     {t:["I","C"], label:"I + C → Data-oriented thinking"},
-//     {t:["A","I"], label:"A + I → Creative technology interest"},
-//     {t:["E","S"], label:"E + S → Leadership & management"},
-//     {t:["S","C"], label:"S + C → Support & QA roles"},
-//     {t:["R","S"], label:"R + S → Security & cloud systems"}
-//   ];
-
-//   let best = "";
-//   let score = 0;
-
-//   pairs.forEach(p => {
-
-//     const s = (riasecScores[p.t[0]] || 0) + (riasecScores[p.t[1]] || 0);
-
-//     if(s > score){
-//       score = s;
-//       best = p.label;
-//     }
-
-//   });
-
-//   return best;
-// };
+  };
 
   if (!predictions || !Array.isArray(predictions.suggestions)) {
     return (
@@ -338,100 +324,78 @@ const donutOptions = {
   }
 
   return (
-    // <div className="max-w-4xl mx-auto px-6 py-10">
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 px-6 py-10">
+    <div className="min-h-screen flex flex-col items-center bg-slate-50 px-6 py-10">
 
-      {/* ===== TOP 3 PREDICTIONS ===== */}
-      <div className="mb-8">
-        {/* ===== RIASEC VISUALIZATION ===== */}
+      {/* ===== RIASEC ===== */}
+      <div className="mb-10 flex flex-col items-center">
+        <h1 className="text-3xl font-bold text-slate-800 mb-6">
+          Your RIASEC Profile
+        </h1>
 
-<div className="mb-10 flex flex-col items-center">
-
- <h1 className="text-3xl font-bold text-slate-800 tracking-wide mb-6">
-  Your RIASEC Profile
-</h1>
-
-  {/* <div className="w-[420px]">
-    <Doughnut data={donutData} options={donutOptions} />
-  </div> */}
-  <div className="w-[420px] flex justify-center items-center">
-  <Doughnut data={donutData} options={donutOptions} />
-</div>
-
-  {/* <div className="mt-4 bg-gray-100 px-4 py-2 rounded-lg text-gray-700">
-    Strong Association: {getAssociation()}
-  </div> */}
-  {/* <div className="mt-6 px-6 py-3 rounded-xl bg-indigo-100 text-indigo-800 font-semibold shadow-sm">
-  Strong Association: {getAssociation()}
-</div> */}
-
-</div>
-        {/* <h1 className="text-3xl font-bold mb-2">Career Suggestions</h1>
-        <p className="text-gray-500 mb-4">
-          Based on your responses, here are your best CS/IT career matches
-        </p> */}
-        {/* ===== XAI EXPLANATION ===== */}
-<div className="bg-white p-6 rounded-2xl shadow-md max-w-3xl mb-10">
-
-  <h2 className="text-xl font-semibold text-indigo-700 mb-3">
-    Why this recommendation?
-  </h2>
-
-  <p className="text-gray-700 mb-2">
-    {predictions.explanation?.reason}
-  </p>
-
-  <p className="text-sm text-gray-500 mb-4">
-    Confidence: {predictions.explanation?.confidence}%
-  </p>
-
-  <h3 className="font-semibold text-gray-800 mb-2">
-    Your Strengths:
-  </h3>
-
-  <div className="flex gap-3 flex-wrap">
-    {predictions.explanation?.top_traits?.map((t, i) => (
-      <span
-        key={i}
-        className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm"
-      >
-        {t[0]}
-      </span>
-    ))}
-  </div>
-
-</div>
-
-        <div className="text-center mt-12">
-  <h2 className="text-3xl font-bold text-slate-800">
-    Career Suggestions
-  </h2>
-
-  <p className="text-slate-500 mt-2">
-    Based on your responses, here are your best CS/IT career matches
-  </p>
-</div>
-
-        {/* <div className="flex flex-wrap gap-3">
-          {predictions.top_3_careers.map((c, index) => (
-            <div
-              key={c.interest}
-              className={`px-4 py-2 rounded-full text-sm font-semibold
-                ${
-                  index === 0
-                    ? "bg-green-100 text-green-700"
-                    : "bg-purple-100 text-purple-700"
-                }`}
-            >
-              {index + 1}. {c.interest} — {Math.round(c.confidence * 100)}%
-            </div>
-          ))}
-        </div> */}
+        <div className="w-[420px] flex justify-center">
+          <Doughnut data={donutData} options={donutOptions} />
+        </div>
       </div>
 
-      {/* ===== SUGGESTION CARDS ===== */}
-      {/* <div className="grid sm:grid-cols-2 gap-6"> */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 max-w-5xl">
+      {/* ===== GLOBAL XAI ===== */}
+      <div className="bg-white p-6 rounded-2xl shadow-md max-w-3xl mb-12 w-full mx-auto text-center">
+
+        <h2 className="text-xl font-semibold text-indigo-700 mb-3">
+          Why this recommendation?
+        </h2>
+
+        <p className="text-gray-700 mb-2">
+          {explanation?.reason}
+        </p>
+
+        <p className="text-sm text-gray-500 mb-4">
+          Confidence: {explanation?.confidence}%
+        </p>
+
+        <h3 className="font-semibold text-gray-800 mb-2">
+          Your Strengths:
+        </h3>
+
+        <div className="flex gap-3 flex-wrap mb-4 justify-center">
+          {explanation?.top_traits?.map((t, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm"
+            >
+              {t[0]} ({t[1].toFixed(1)})
+            </span>
+          ))}
+        </div>
+
+        <h3 className="font-semibold text-gray-800 mb-2">
+          Areas to Improve:
+        </h3>
+
+        <div className="flex gap-3 flex-wrap justify-center">
+          {explanation?.low_traits?.map((t, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm"
+            >
+              {t[0]} ({t[1].toFixed(1)})
+            </span>
+          ))}
+        </div>
+
+      </div>
+
+      {/* ===== CAREER TITLE ===== */}
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-bold text-slate-800">
+          Career Suggestions
+        </h2>
+        <p className="text-slate-500 mt-2">
+          Based on your responses, here are your best matches
+        </p>
+      </div>
+
+      {/* ===== CARDS ===== */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
         {predictions.suggestions.slice(0, 3).map((career) => (
 
           <button
@@ -450,25 +414,38 @@ const donutOptions = {
                 {career.category}
               </span>
             </div>
-{/* 
+
             <p className="text-gray-600 mt-2">
               {career.description}
-            </p> */}
-            <p className="text-gray-600 mt-2">
-  {career.description}
-</p>
+            </p>
 
-<p className="mt-2 text-sm text-indigo-600 font-semibold">
-  Match: {career.match_score}%
-</p>
+            <p className="mt-2 text-sm text-indigo-600 font-semibold">
+              Match: {career.match_score}%
+            </p>
 
-<p className="text-xs text-gray-500 mt-1">
-  {career.explanation}
-</p>
+            
+            <div className="mt-3 text-xs text-gray-600  pt-2">
+              <p className="font-semibold text-indigo-600">
+                Why this career?
+              </p>
+
+              <p>
+                {career.xai?.reason || "Based on your profile similarity"}
+              </p>
+
+              <p className="text-gray-500">
+                Similarity: {career.xai?.similarity_score || career.match_score}%
+              </p>
+
+              <p className="text-gray-500">
+                Confidence: {career.xai?.model_confidence || explanation?.confidence}%
+              </p>
+            </div>
 
           </button>
         ))}
       </div>
+
     </div>
   );
 }
