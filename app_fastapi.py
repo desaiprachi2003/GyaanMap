@@ -46,9 +46,7 @@ app.add_middleware(
 # LOAD CS/IT ML MODELS & DATA
 # =========================================================
 
-# XGBoost career classifier (CS/IT only)
-# model = joblib.load("xgb_model.joblib")
-# label_encoder = joblib.load("label_encoder.joblib")
+
 model = joblib.load("xgb_model_final.joblib")
 label_encoder = joblib.load("label_encoder_final.joblib")
 # Load dataset for LIME
