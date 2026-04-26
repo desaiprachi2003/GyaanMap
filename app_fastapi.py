@@ -253,7 +253,7 @@ def predict(riasec: dict):
     # STEP 4: Weighted scoring
     interest_to_traits = {
         "Technical": ["R", "I"],
-        "Data": ["R", "I"],
+        "Data": ["C", "I"],
         "Design": ["A", "I"],
         "Management": ["E", "S"],
         "QualitySupport": ["S", "C"],
